@@ -1,0 +1,12 @@
+include ':fake_gps_history:fake_gps_history_presentation'
+include ':fake_gps_history:fake_gps_history_domain'
+include ':fake_gps_history:fake_gps_history_data'
+include ':fake_gps_history'
+rootProject.name = "Fake Gps"
+
+include(
+        ":app",
+)
+
+//include ":auth_presentation"
+//project(":auth_presentation").projectDir = file("../auth/auth_presentation")

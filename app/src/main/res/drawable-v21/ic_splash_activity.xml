@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@android:color/white" />
+
+    <!--    <item>-->
+    <!--        <shape>-->
+    <!--            <gradient-->
+    <!--                android:centerX="0.5"-->
+    <!--                android:centerY="0.3"-->
+    <!--                android:endColor="@color/colorPrimaryDark"-->
+    <!--                android:gradientRadius="300dp"-->
+    <!--                android:startColor="@color/colorPrimary"-->
+    <!--                android:type="radial" />-->
+    <!--        </shape>-->
+    <!--    </item>-->
+
+    <item
+        android:drawable="@drawable/ic_splash_logo"
+        android:top="265dp"
+        android:bottom="265dp"
+        android:right="130dp"
+        android:left="130dp" />
+
+    <!--    <item android:top="100dp">-->
+    <!--        <bitmap-->
+    <!--            android:gravity="center"-->
+    <!--            android:src="@drawable/ic_splash_logo" />-->
+    <!--    </item>-->
+</layer-list>

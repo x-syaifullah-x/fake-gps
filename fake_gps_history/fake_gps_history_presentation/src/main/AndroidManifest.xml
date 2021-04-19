@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="id.xxx.fake.gps.history.presentation">
+
+    <application>
+        <activity
+            android:name=".HistoryActivity"
+            android:parentActivityName=".HistoryActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
+</manifest>

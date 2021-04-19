@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.ui.home.HomeFragment">
+
+    <data>
+
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/bg_toolbar_main"
+            android:onClick="@{onClick::onClick}"
+            android:textAlignment="center"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search Location"
+                android:textColor="@android:color/darker_gray" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_stop_fake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClick::onClick}"
+            android:text="stop"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.9"
+            tools:visibility="visible" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_move_to_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClick::onClick}"
+            android:text="history"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias=".1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.9" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_start_fake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClick::onClick}"
+            android:text="start"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias=".1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/aci_my_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="@{(view) -> onClick.onClick(view)}"
+            android:src="@drawable/ic_action_my_location"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.05" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{(view) -> onClick.onClick(view)}"
+            android:text="logout"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias=".9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias=".9" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{(view) -> onClick.onClick(view)}"
+            android:text="Sign"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias=".9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias=".9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

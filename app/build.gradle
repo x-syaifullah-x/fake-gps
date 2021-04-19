@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id "com.google.gms.google-services"
+}
+
+android {
+
+    compileSdkVersion build_versions.compile_sdk_version
+    buildToolsVersion build_versions.build_tools_version
+
+    defaultConfig {
+        applicationId "id.xxx.fake.gps"
+        minSdkVersion build_versions.min_sdk_version
+        targetSdkVersion build_versions.target_sdk_version
+        versionCode build_versions.version_code
+        versionName build_versions.version_name
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions { jvmTarget = "1.8" }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+
+    packagingOptions {
+        exclude "**/attach_hotspot_windows.dll"
+        exclude "META-INF/licenses/**"
+        exclude "META-INF/AL2.0"
+        exclude "META-INF/LGPL2.1"
+    }
+}
+
+dependencies {
+
+    implementation project(':fake_gps_history')
+    implementation "com.github.x-syaifullah-x:android-module-auth:0.0.100"
+
+    implementation 'com.github.x-syaifullah-x:android-module-map-box:0.0.100'
+
+    testImplementation "com.github.x-syaifullah-x.android-module-test:test:$vAndroidModuleTest"
+    androidTestImplementation "com.github.x-syaifullah-x.android-module-test:test:$vAndroidModuleTest"
+
+    /* Google Maps */
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+
+    kapt "androidx.room:room-compiler:$vRoom"
+
+    api "com.github.x-syaifullah-x.android-module-base:base_presentation:$vAndroidModuleBase"
+
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1"
+
+    api "androidx.work:work-runtime:2.5.0"
+    api "androidx.work:work-runtime-ktx:2.5.0"
+    api "androidx.work:work-gcm:2.5.0"
+    androidTestImplementation "androidx.work:work-testing:2.5.0"
+}
