@@ -1,0 +1,160 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "id.xxx.module",
+    "module": "map_box_search_data",
+    "version": "0.0.100",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.0.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.squareup.retrofit2",
+          "module": "retrofit",
+          "version": {
+            "requires": "2.9.0"
+          }
+        },
+        {
+          "group": "com.squareup.retrofit2",
+          "module": "converter-gson",
+          "version": {
+            "requires": "2.9.0"
+          }
+        },
+        {
+          "group": "com.google.code.gson",
+          "module": "gson",
+          "version": {
+            "requires": "2.8.8"
+          }
+        },
+        {
+          "group": "androidx.room",
+          "module": "room-runtime",
+          "version": {
+            "requires": "2.4.0-alpha04"
+          }
+        },
+        {
+          "group": "androidx.room",
+          "module": "room-ktx",
+          "version": {
+            "requires": "2.4.0-alpha04"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "map_box_search_data-0.0.100.aar",
+          "url": "map_box_search_data-0.0.100.aar",
+          "size": 77348,
+          "sha512": "2b28428ca3e96885fe06f5224cecc4e2babbd9a621dee2f508fb063e2d7cdb6035ca2c8818da1ebafebed9072d6c2f2825498022906a039b52fbae5790d417ad",
+          "sha256": "77f9d8463a50ee2756e194da219dd65d7938a6c0066bd510296eb8ce6b40f845",
+          "sha1": "b682eb1950978b65b8f7ea7f8bc3e3f71f681321",
+          "md5": "2aa905e90de5a9d5b5f15f23dba14b5d"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.squareup.retrofit2",
+          "module": "retrofit",
+          "version": {
+            "requires": "2.9.0"
+          }
+        },
+        {
+          "group": "com.squareup.retrofit2",
+          "module": "converter-gson",
+          "version": {
+            "requires": "2.9.0"
+          }
+        },
+        {
+          "group": "com.google.code.gson",
+          "module": "gson",
+          "version": {
+            "requires": "2.8.8"
+          }
+        },
+        {
+          "group": "androidx.room",
+          "module": "room-runtime",
+          "version": {
+            "requires": "2.4.0-alpha04"
+          }
+        },
+        {
+          "group": "androidx.room",
+          "module": "room-ktx",
+          "version": {
+            "requires": "2.4.0-alpha04"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.0"
+          }
+        },
+        {
+          "group": "id.xxx.module",
+          "module": "common-test",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
+          "group": "id.xxx.module",
+          "module": "map_box_search_domain",
+          "version": {
+            "requires": "0.0.100"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "map_box_search_data-0.0.100.aar",
+          "url": "map_box_search_data-0.0.100.aar",
+          "size": 77348,
+          "sha512": "2b28428ca3e96885fe06f5224cecc4e2babbd9a621dee2f508fb063e2d7cdb6035ca2c8818da1ebafebed9072d6c2f2825498022906a039b52fbae5790d417ad",
+          "sha256": "77f9d8463a50ee2756e194da219dd65d7938a6c0066bd510296eb8ce6b40f845",
+          "sha1": "b682eb1950978b65b8f7ea7f8bc3e3f71f681321",
+          "md5": "2aa905e90de5a9d5b5f15f23dba14b5d"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "id.xxx.module",
+    "module": "presentation-base",
+    "version": "0.0.100",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.0.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "id.xxx.module",
+          "module": "viewbinding",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.4.0"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-service",
+          "version": {
+            "requires": "2.4.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "presentation-base-0.0.100.aar",
+          "url": "presentation-base-0.0.100.aar",
+          "size": 30434,
+          "sha512": "6a225c59c81b224fe707cadc8e0a26ade0dee0cb09cd6b5b440fe9319404a1370de6413ff5bb4c6204ae3eefb7d97d63a6cafbee05a658118a97cf216d997614",
+          "sha256": "da7c48d859409c1114c382d0876060cea2d97dfd9dae8cebf2f9b3b22775d976",
+          "sha1": "512e90ed32004aef5477223facad58739a77e746",
+          "md5": "3a9f3550f8d2dd8ea51182a0b8bafee1"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "id.xxx.module",
+          "module": "viewbinding",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.4.0"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-service",
+          "version": {
+            "requires": "2.4.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        },
+        {
+          "group": "id.xxx.module",
+          "module": "common-test",
+          "version": {
+            "requires": "0.0.100"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "presentation-base-0.0.100.aar",
+          "url": "presentation-base-0.0.100.aar",
+          "size": 30434,
+          "sha512": "6a225c59c81b224fe707cadc8e0a26ade0dee0cb09cd6b5b440fe9319404a1370de6413ff5bb4c6204ae3eefb7d97d63a6cafbee05a658118a97cf216d997614",
+          "sha256": "da7c48d859409c1114c382d0876060cea2d97dfd9dae8cebf2f9b3b22775d976",
+          "sha1": "512e90ed32004aef5477223facad58739a77e746",
+          "md5": "3a9f3550f8d2dd8ea51182a0b8bafee1"
+        }
+      ]
+    }
+  ]
+}

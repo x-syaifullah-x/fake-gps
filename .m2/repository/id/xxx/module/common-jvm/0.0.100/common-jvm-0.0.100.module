@@ -1,0 +1,110 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "id.xxx.module",
+    "module": "common-jvm",
+    "version": "0.0.100",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.0.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-coroutines-core",
+          "version": {
+            "requires": "1.5.2"
+          }
+        },
+        {
+          "group": "com.squareup.okhttp3",
+          "module": "okhttp-dnsoverhttps",
+          "version": {
+            "requires": "5.0.0-alpha.2"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "common-jvm-0.0.100.jar",
+          "url": "common-jvm-0.0.100.jar",
+          "size": 88214,
+          "sha512": "8b6da76fd9c794c25094d09b94d95ea2e72daa3a63a6de963b362654b5f4855de52399b17ea0c3c0069554c1a2ff88426d1c81ca9feffd785155f81e18e567bb",
+          "sha256": "0725a98ad4bf38a4377b8d42600dfbd24f038ec0dcd22975d4be1350093764f7",
+          "sha1": "b3f57e54c52253b5fdb3d6a832ed48d46caecb6b",
+          "md5": "73b0912fecf8fe2b27fd2ed917b88f87"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-coroutines-core",
+          "version": {
+            "requires": "1.5.2"
+          }
+        },
+        {
+          "group": "com.squareup.okhttp3",
+          "module": "okhttp-dnsoverhttps",
+          "version": {
+            "requires": "5.0.0-alpha.2"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "common-jvm-0.0.100.jar",
+          "url": "common-jvm-0.0.100.jar",
+          "size": 88214,
+          "sha512": "8b6da76fd9c794c25094d09b94d95ea2e72daa3a63a6de963b362654b5f4855de52399b17ea0c3c0069554c1a2ff88426d1c81ca9feffd785155f81e18e567bb",
+          "sha256": "0725a98ad4bf38a4377b8d42600dfbd24f038ec0dcd22975d4be1350093764f7",
+          "sha1": "b3f57e54c52253b5fdb3d6a832ed48d46caecb6b",
+          "md5": "73b0912fecf8fe2b27fd2ed917b88f87"
+        }
+      ]
+    }
+  ]
+}

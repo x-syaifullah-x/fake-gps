@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="id.xxx.fake.gps.history.presentation.utils.FormatDate" />
+
+        <variable
+            name="data"
+            type="id.xxx.fake.gps.history.domain.model.HistoryModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+
+        <!--        <androidx.constraintlayout.widget.Guideline-->
+        <!--            android:id="@+id/guideline_top"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            app:layout_constraintGuide_percent="0.1" />-->
+
+        <!--        <androidx.constraintlayout.widget.Guideline-->
+        <!--            android:id="@+id/guideline_bottom"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            app:layout_constraintGuide_percent="0.9" />-->
+
+        <!--        <androidx.constraintlayout.widget.Guideline-->
+        <!--            android:id="@+id/guideline_left"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical"-->
+        <!--            app:layout_constraintGuide_percent="0.03" />-->
+
+        <!--        <androidx.constraintlayout.widget.Guideline-->
+        <!--            android:id="@+id/guideline_right"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical"-->
+        <!--            app:layout_constraintGuide_percent="0.97" />-->
+
+        <!--        <androidx.appcompat.widget.AppCompatTextView-->
+        <!--            android:id="@+id/address_history"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:lineSpacingExtra="2dp"-->
+        <!--            android:text="@{data.address}"-->
+        <!--            app:layout_constrainedWidth="true"-->
+        <!--            app:layout_constraintEnd_toEndOf="@id/guideline_right"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/guideline_left"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/guideline_top"-->
+        <!--            tools:text="Address" />-->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/address_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="2dp"
+            android:text="@{data.address}"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Address" />
+
+        <!--        <androidx.appcompat.widget.AppCompatTextView-->
+        <!--            android:id="@+id/latitude_history"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="5dp"-->
+        <!--            android:text="@{@string/formatDouble(data.latitude)}"-->
+        <!--            app:layout_constrainedWidth="true"-->
+        <!--            app:layout_constraintEnd_toEndOf="@id/guideline_right"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/guideline_left"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/address_history"-->
+        <!--            tools:text="Latitude" />-->
+
+        <!--        <androidx.appcompat.widget.AppCompatTextView-->
+        <!--            android:id="@+id/longitude_history"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="5dp"-->
+        <!--            android:text="@{@string/formatDouble(data.longitude)}"-->
+        <!--            app:layout_constrainedWidth="true"-->
+        <!--            app:layout_constraintEnd_toEndOf="@id/guideline_right"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/guideline_left"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/latitude_history"-->
+        <!--            tools:text="Longitude" />-->
+
+        <!--        <androidx.appcompat.widget.AppCompatTextView-->
+        <!--            android:id="@+id/date_history"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="5dp"-->
+        <!--            android:text="@{FormatDate.INSTANCE.formatDate(data.date)}"-->
+        <!--            app:layout_constrainedWidth="true"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/guideline_bottom"-->
+        <!--            app:layout_constraintEnd_toEndOf="@id/guideline_right"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/guideline_left"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/address_history"-->
+        <!--            tools:text="00:00:00 Sun, 01 Jan 2020" />-->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/date_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{FormatDate.INSTANCE.formatDate(data.date)}"
+            app:layout_constraintTop_toBottomOf="@+id/address_history"
+            tools:text="00:00:00 Sun, 01 Jan 2020" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

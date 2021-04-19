@@ -1,0 +1,125 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "id.xxx.module",
+    "module": "viewbinding",
+    "version": "0.0.100",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.0.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.fragment",
+          "module": "fragment-ktx",
+          "version": {
+            "requires": "1.4.0"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-common",
+          "version": {
+            "requires": "2.4.0"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "viewbinding",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "viewbinding-0.0.100.aar",
+          "url": "viewbinding-0.0.100.aar",
+          "size": 12320,
+          "sha512": "d02f6a123cea3a51faf4f03bc0401f74aa6a8591c5e0deee26460144b843e082e95bcc99403cf543043bd7509b6c22d246ac5c2b0455f754c51dd912e2fefed2",
+          "sha256": "b875b787bfafa8fdfd6e00e1beeded4ce25313bfa509d94710276f126f560007",
+          "sha1": "e8624c4568b25fd38137a982dd2e0342f46ec67b",
+          "md5": "7a3b566baf6f1f71ff83058e9825a5b8"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.fragment",
+          "module": "fragment-ktx",
+          "version": {
+            "requires": "1.4.0"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-common",
+          "version": {
+            "requires": "2.4.0"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "viewbinding",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        },
+        {
+          "group": "id.xxx.module",
+          "module": "common-test",
+          "version": {
+            "requires": "0.0.100"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "viewbinding-0.0.100.aar",
+          "url": "viewbinding-0.0.100.aar",
+          "size": 12320,
+          "sha512": "d02f6a123cea3a51faf4f03bc0401f74aa6a8591c5e0deee26460144b843e082e95bcc99403cf543043bd7509b6c22d246ac5c2b0455f754c51dd912e2fefed2",
+          "sha256": "b875b787bfafa8fdfd6e00e1beeded4ce25313bfa509d94710276f126f560007",
+          "sha1": "e8624c4568b25fd38137a982dd2e0342f46ec67b",
+          "md5": "7a3b566baf6f1f71ff83058e9825a5b8"
+        }
+      ]
+    }
+  ]
+}

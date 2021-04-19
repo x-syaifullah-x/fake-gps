@@ -1,0 +1,224 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "id.xxx.module",
+    "module": "auth_presentation",
+    "version": "0.0.100",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.0.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "debugApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "id.xxx.module",
+          "module": "auth_domain",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
+          "group": "id.xxx.module",
+          "module": "presentation",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "viewbinding",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "databinding-common",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "databinding-runtime",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "databinding-adapters",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "databinding-ktx",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "auth_presentation-0.0.100.aar",
+          "url": "auth_presentation-0.0.100.aar",
+          "size": 184118,
+          "sha512": "b6fa0f86f25acfd15db34195e35f0deb029d1b16d15b41cf8d19cb0f243f72cab8df6cfe439a6865e89a22243d5a21ce4ae71ffe23de8452ccb0c4d1da919dcc",
+          "sha256": "f482bcb51e099263290e1b40fd63aeb579e9cfbba7b43cc4e2950c2b97e5a273",
+          "sha1": "1945963f7bc10caf9bdbbfe7438ee61df117f9e7",
+          "md5": "2d1630f5472723f55cb7c0d455038207"
+        }
+      ]
+    },
+    {
+      "name": "debugRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.jacoco",
+          "module": "org.jacoco.agent",
+          "version": {
+            "requires": "0.8.3"
+          },
+          "thirdPartyCompatibility": {
+            "artifactSelector": {
+              "name": "org.jacoco.agent",
+              "type": "jar",
+              "extension": "jar",
+              "classifier": "runtime"
+            }
+          }
+        },
+        {
+          "group": "id.xxx.module",
+          "module": "auth_domain",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
+          "group": "id.xxx.module",
+          "module": "presentation",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "viewbinding",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "databinding-common",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "databinding-runtime",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "databinding-adapters",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "databinding-ktx",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        },
+        {
+          "group": "id.xxx.module",
+          "module": "common-test",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
+          "group": "androidx.constraintlayout",
+          "module": "constraintlayout",
+          "version": {
+            "requires": "2.1.2"
+          }
+        },
+        {
+          "group": "com.airbnb.android",
+          "module": "lottie",
+          "version": {
+            "requires": "4.2.0"
+          }
+        },
+        {
+          "group": "androidx.navigation",
+          "module": "navigation-fragment-ktx",
+          "version": {
+            "requires": "2.3.5"
+          }
+        },
+        {
+          "group": "androidx.navigation",
+          "module": "navigation-ui-ktx",
+          "version": {
+            "requires": "2.3.5"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "auth_presentation-0.0.100.aar",
+          "url": "auth_presentation-0.0.100.aar",
+          "size": 184118,
+          "sha512": "b6fa0f86f25acfd15db34195e35f0deb029d1b16d15b41cf8d19cb0f243f72cab8df6cfe439a6865e89a22243d5a21ce4ae71ffe23de8452ccb0c4d1da919dcc",
+          "sha256": "f482bcb51e099263290e1b40fd63aeb579e9cfbba7b43cc4e2950c2b97e5a273",
+          "sha1": "1945963f7bc10caf9bdbbfe7438ee61df117f9e7",
+          "md5": "2d1630f5472723f55cb7c0d455038207"
+        }
+      ]
+    }
+  ]
+}

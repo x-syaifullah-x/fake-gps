@@ -1,0 +1,58 @@
+@startuml
+
+node "Presentation" as presentation {
+    component "View Model" as ViewModel
+    component "UI" as Activity
+    component "Worker" as Worker
+    component "Receiver" as BroadcastReceiver
+    component "Service" as Service
+    component "Provider" as ContentProvider
+}
+
+node "Domain" as domain {
+    component "Interactor_Impl" as InteractorImpl
+    component "Interactor" as Interactor
+    component "iRepository" as IRepository
+}
+
+node "Data Source" as data_source {
+    component "Repository_Impl" as RepositoryImpl
+    component "Local Data" as LocalDataSource
+    component "Remote Data" as RemoteDataSource
+    database "Database" as database
+    database "Network" as Network
+}
+
+component "model" as model
+component "entity" as entity
+component "api_response" as api_response
+
+/' Layer Presentation '/
+Activity -down-> ViewModel
+Service -down-> ViewModel
+Service -down-> InteractorImpl
+ViewModel -down-> InteractorImpl
+Worker -down-> InteractorImpl
+BroadcastReceiver -down-> InteractorImpl
+ContentProvider -down-> InteractorImpl
+presentation -down-> model
+
+/' Layer Domain '/
+IRepository <-up-> Interactor
+Interactor <-up-> InteractorImpl
+IRepository -down-> RepositoryImpl
+domain -left-> model
+
+/' Layer Data Source '/
+RemoteDataSource -left-> api_response
+RepositoryImpl -left-> api_response
+LocalDataSource -right-> entity
+RepositoryImpl -up-> model
+RepositoryImpl -up-> IRepository
+RepositoryImpl -left-> entity
+LocalDataSource <-up-> RepositoryImpl
+RemoteDataSource <-up-> RepositoryImpl
+Network <-up-> RemoteDataSource
+database <-up-> LocalDataSource
+
+@enduml

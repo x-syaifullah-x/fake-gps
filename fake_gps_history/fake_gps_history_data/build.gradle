@@ -1,0 +1,55 @@
+plugins {
+    id "com.android.library"
+    id "kotlin-android"
+}
+
+android {
+    compileSdkVersion build_versions.compile_sdk_version
+    buildToolsVersion build_versions.build_tools_version
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk_version
+        targetSdkVersion build_versions.target_sdk_version
+        versionCode build_versions.version_code
+        versionName build_versions.version_name
+
+        consumerProguardFiles "consumer-rules.pro"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions { jvmTarget = "1.8" }
+}
+
+dependencies {
+
+    implementation project(":fake_gps_history:fake_gps_history_domain")
+
+    api "androidx.room:room-paging:$vRoom"
+    api "androidx.room:room-runtime:$vRoom"
+    api "androidx.room:room-ktx:$vRoom"
+    androidTestImplementation "androidx.room:room-testing:$vRoom"
+
+    api "com.google.firebase:firebase-firestore:24.0.0"
+
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1"
+
+    api "com.google.code.gson:gson:2.8.8"
+
+    testImplementation "junit:junit:$vJunit"
+    testImplementation "org.mockito:mockito-core:$vMockito"
+    testImplementation "org.mockito:mockito-inline:$vMockito"
+
+    androidTestImplementation "androidx.test.ext:junit-ktx:$vAndroidJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$vEspresso"
+    implementation "androidx.test.espresso:espresso-idling-resource:$vEspresso"
+}

@@ -1,0 +1,132 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "id.xxx.module",
+    "module": "common-android-domain",
+    "version": "0.0.100",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.0.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "id.xxx.module",
+          "module": "common-jvm",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
+          "group": "androidx.paging",
+          "module": "paging-runtime-ktx",
+          "version": {
+            "requires": "3.1.0"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "viewbinding",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "common-android-domain-0.0.100.aar",
+          "url": "common-android-domain-0.0.100.aar",
+          "size": 5906,
+          "sha512": "904daebeef64800a695d0a5571b3e1c278c4720db592774e605cea1623d656c8308487584cf7ed8391ae27eebff783b58d60ccdc86828e0553cb91f84febb1e9",
+          "sha256": "2b5747380f83d6da9b063575ebb1295bc8a99da6bfafe75c81be7dfd2c9f3235",
+          "sha1": "9465d89e92f6f9eb238d77204ada6d5dfa68a1d6",
+          "md5": "f147183e20f582ee4d070b0a8695045e"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "id.xxx.module",
+          "module": "common-jvm",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
+          "group": "androidx.paging",
+          "module": "paging-runtime-ktx",
+          "version": {
+            "requires": "3.1.0"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "viewbinding",
+          "version": {
+            "requires": "7.0.4"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        },
+        {
+          "group": "id.xxx.module",
+          "module": "common-test",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
+          "group": "androidx.test.espresso",
+          "module": "espresso-idling-resource",
+          "version": {
+            "requires": "3.4.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "common-android-domain-0.0.100.aar",
+          "url": "common-android-domain-0.0.100.aar",
+          "size": 5906,
+          "sha512": "904daebeef64800a695d0a5571b3e1c278c4720db592774e605cea1623d656c8308487584cf7ed8391ae27eebff783b58d60ccdc86828e0553cb91f84febb1e9",
+          "sha256": "2b5747380f83d6da9b063575ebb1295bc8a99da6bfafe75c81be7dfd2c9f3235",
+          "sha1": "9465d89e92f6f9eb238d77204ada6d5dfa68a1d6",
+          "md5": "f147183e20f582ee4d070b0a8695045e"
+        }
+      ]
+    }
+  ]
+}

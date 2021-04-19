@@ -1,0 +1,125 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "id.xxx.module",
+    "module": "presentation",
+    "version": "0.0.100",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.0.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "id.xxx.module",
+          "module": "presentation-base",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
+          "group": "com.google.android.material",
+          "module": "material",
+          "version": {
+            "requires": "1.4.0"
+          }
+        },
+        {
+          "group": "androidx.navigation",
+          "module": "navigation-common",
+          "version": {
+            "requires": "2.3.5"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "presentation-0.0.100.aar",
+          "url": "presentation-0.0.100.aar",
+          "size": 38402,
+          "sha512": "280656982108c023ea3de6da18d8258eafdf1c6ab409e0510cb0b87adbd355e8a9864d98d8e736d48884b06502d60c2ba6dd4ecd4a111b48a03914bb57dedf7f",
+          "sha256": "b8ea6a6d962ae31c23878d6b63333dae9292ba8a17c1240e0ed11a1d30f78429",
+          "sha1": "f117ad4b8b4dbb6266b208c94a0ac9bc9496f83c",
+          "md5": "5f7290fc1c4924db49135dc6f49b8a6d"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "id.xxx.module",
+          "module": "presentation-base",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
+          "group": "com.google.android.material",
+          "module": "material",
+          "version": {
+            "requires": "1.4.0"
+          }
+        },
+        {
+          "group": "androidx.navigation",
+          "module": "navigation-common",
+          "version": {
+            "requires": "2.3.5"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        },
+        {
+          "group": "id.xxx.module",
+          "module": "common-test",
+          "version": {
+            "requires": "0.0.100"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "presentation-0.0.100.aar",
+          "url": "presentation-0.0.100.aar",
+          "size": 38402,
+          "sha512": "280656982108c023ea3de6da18d8258eafdf1c6ab409e0510cb0b87adbd355e8a9864d98d8e736d48884b06502d60c2ba6dd4ecd4a111b48a03914bb57dedf7f",
+          "sha256": "b8ea6a6d962ae31c23878d6b63333dae9292ba8a17c1240e0ed11a1d30f78429",
+          "sha1": "f117ad4b8b4dbb6266b208c94a0ac9bc9496f83c",
+          "md5": "5f7290fc1c4924db49135dc6f49b8a6d"
+        }
+      ]
+    }
+  ]
+}

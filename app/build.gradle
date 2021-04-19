@@ -1,0 +1,119 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "kotlin-kapt"
+}
+
+android {
+
+    compileSdkVersion build_versions.compile_sdk_version
+    buildToolsVersion build_versions.build_tools_version
+
+    defaultConfig {
+        applicationId "id.xxx.fake.gps"
+        minSdk build_versions.min_sdk_version
+        targetSdk build_versions.target_sdk_version
+        versionCode build_versions.version_code
+        versionName build_versions.version_name
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        resConfigs "en"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions { jvmTarget = "1.8" }
+
+    signingConfigs {
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+        debug {
+            def debug_store_password = properties.getProperty("debug_store_password")
+            def debug_key_alias = properties.getProperty("debug_key_alias")
+            def debug_key_password = properties.getProperty("debug_key_password")
+            def debug_store_file = properties.getProperty("debug_store_file")
+
+            storeFile file(debug_store_file)
+            storePassword debug_store_password
+            keyAlias debug_key_alias
+            keyPassword debug_key_password
+        }
+
+        release {
+            def release_store_password = properties.getProperty("release_store_password")
+            def release_key_alias = properties.getProperty("release_key_alias")
+            def release_key_password = properties.getProperty("release_key_password")
+            def release_store_file = properties.getProperty("release_store_file")
+
+            storeFile file(release_store_file)
+            storePassword release_store_password
+            keyAlias release_key_alias
+            keyPassword release_key_password
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            debuggable false
+            jniDebuggable false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+        unitTests.includeAndroidResources = true
+    }
+
+    packagingOptions {
+        exclude "META-INF/**"
+        exclude "okhttp3/**"
+        exclude "kotlin/**"
+        exclude "org/**"
+        exclude "**.properties"
+        exclude "**.bin"
+    }
+}
+
+dependencies {
+
+    implementation project(":fake_gps_history")
+
+    implementation "id.xxx.module:auth:$vMyModule"
+    implementation "id.xxx.module:map_box_search:$vMyModule"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+
+    implementation "com.google.android.gms:play-services-maps:18.0.1"
+    implementation "com.google.android.gms:play-services-location:19.0.0"
+
+    kapt "androidx.room:room-compiler:$vRoom"
+
+    testImplementation "junit:junit:$vJunit"
+    testImplementation "org.mockito:mockito-core:$vMockito"
+    testImplementation "org.mockito:mockito-inline:$vMockito"
+
+    androidTestImplementation "androidx.test.ext:junit-ktx:$vAndroidJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$vEspresso"
+    implementation "androidx.test.espresso:espresso-idling-resource:$vEspresso"
+}
