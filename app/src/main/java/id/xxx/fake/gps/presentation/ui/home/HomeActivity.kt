@@ -9,10 +9,6 @@ import id.xxx.fake.gps.presentation.ui.home.map.Map
 
 class HomeActivity : BaseActivityWithNavigation<ActivityHomeBinding>() {
 
-    companion object {
-        const val DATA_EXTRA = "id.xxx.fake.gps.presentation.ui.home.HomeActivity"
-    }
-
     override val binding by viewBinding(ActivityHomeBinding::inflate)
 
     override fun getIdNavHost() = R.id.nav_host_main

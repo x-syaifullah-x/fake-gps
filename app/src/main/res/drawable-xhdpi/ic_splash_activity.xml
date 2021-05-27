@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
 
-    <item android:drawable="@android:color/white" />
+    <item android:drawable="@color/white" />
+
+    <!--    <item>-->
+    <!--        <shape>-->
+    <!--            <size-->
+    <!--                android:width="640dp"-->
+    <!--                android:height="960dp" />-->
+    <!--            <solid android:color="@android:color/white" />-->
+    <!--        </shape>-->
+    <!--    </item>-->
 
     <!--    <item>-->
     <!--        <shape>-->
@@ -17,10 +27,7 @@
 
     <item
         android:drawable="@drawable/ic_splash_logo"
-        android:top="265dp"
-        android:bottom="265dp"
-        android:right="130dp"
-        android:left="130dp" />
+        android:gravity="center" />
 
     <!--    <item android:top="100dp">-->
     <!--        <bitmap-->
