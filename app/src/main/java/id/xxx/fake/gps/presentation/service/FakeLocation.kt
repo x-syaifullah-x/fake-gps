@@ -5,6 +5,7 @@ import android.location.LocationManager
 import android.location.LocationManager.GPS_PROVIDER
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
+import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -61,7 +62,7 @@ class FakeLocation private constructor(
     private fun addTestProvider(): Boolean {
         return try {
             locationManager?.apply {
-                addTestProvider(GPS_PROVIDER, true, true, false, false, true, true, true, 1, 0)
+                addTestProvider(GPS_PROVIDER, true, true, false, false, true, true, true, 1, 1)
                 setTestProviderEnabled(GPS_PROVIDER, true)
             }
             true
@@ -107,6 +108,10 @@ class FakeLocation private constructor(
             speedAccuracyMetersPerSecond = Random.nextDouble(0.0, 100.0).toFloat()
             bearingAccuracyDegrees = Random.nextDouble(0.0, 360.0).toFloat()
             verticalAccuracyMeters = Random.nextDouble(0.0, 100.0).toFloat()
+        }
+        extras = Bundle().apply {
+            putInt("maxCn0", 30)
+            putInt("minCn0", 0)
         }
     }
 

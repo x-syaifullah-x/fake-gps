@@ -59,8 +59,8 @@ dependencies {
 
     implementation 'com.github.x-syaifullah-x:android-module-map-box:0.0.200'
 
-    testImplementation "com.github.x-syaifullah-x.android-module-test:test:$vAndroidModuleTest"
-    androidTestImplementation "com.github.x-syaifullah-x.android-module-test:test:$vAndroidModuleTest"
+//    testImplementation "com.github.x-syaifullah-x.android-module-test:test:$vAndroidModuleTest"
+//    androidTestImplementation "com.github.x-syaifullah-x.android-module-test:test:$vAndroidModuleTest"
 
     /* Google Maps */
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
@@ -70,10 +70,10 @@ dependencies {
 
     api "com.github.x-syaifullah-x.android-module-base:base_presentation:$vAndroidModuleBase"
 
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
 
-    api "androidx.work:work-runtime:2.6.0-alpha02"
-    api "androidx.work:work-runtime-ktx:2.6.0-alpha02"
-    api "androidx.work:work-gcm:2.6.0-alpha02"
-    androidTestImplementation "androidx.work:work-testing:2.6.0-alpha02"
+    api "androidx.work:work-runtime:2.6.0-beta01"
+    api "androidx.work:work-runtime-ktx:2.6.0-beta01"
+    api "androidx.work:work-gcm:2.6.0-beta01"
+    androidTestImplementation "androidx.work:work-testing:2.6.0-beta01"
 }
