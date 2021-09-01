@@ -8,13 +8,13 @@ build_versions.version_name = "1.0"
 ext.build_versions = build_versions
 
 ext {
-     vGradle = "7.0.1"
-     vKotlin = "1.5.30"
+     //vGradle = "7.0.2"
+     //vKotlin = "1.5.30"
 
-     vAndroidModuleBase = "0.0.100"
-     vAndroidModuleTest = "0.0.100"
+     //vAndroidModuleBase = "0.0.100"
+     //vAndroidModuleTest = "0.0.100"
 
-    vRoom = "2.4.0-alpha03"
+    //vRoom = "2.4.0-alpha03"
 }
 
 static def addRepos(RepositoryHandler handler) {
