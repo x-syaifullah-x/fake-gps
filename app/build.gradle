@@ -2,7 +2,7 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "kotlin-kapt"
-    id "com.google.gms.google-services"
+    //id "com.google.gms.google-services"
 }
 
 android {
@@ -54,26 +54,26 @@ android {
 
 dependencies {
 
-    implementation project(':fake_gps_history')
-    implementation "com.github.x-syaifullah-x:android-module-auth:0.0.200"
+   // implementation project(':fake_gps_history')
+    //implementation "com.github.x-syaifullah-x:android-module-auth:0.0.200"
 
-    implementation 'com.github.x-syaifullah-x:android-module-map-box:0.0.200'
+    //implementation 'com.github.x-syaifullah-x:android-module-map-box:0.0.200'
 
 //    testImplementation "com.github.x-syaifullah-x.android-module-test:test:$vAndroidModuleTest"
 //    androidTestImplementation "com.github.x-syaifullah-x.android-module-test:test:$vAndroidModuleTest"
 
     /* Google Maps */
-    implementation 'com.google.android.gms:play-services-maps:17.0.1'
-    implementation 'com.google.android.gms:play-services-location:18.0.0'
+   // implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    //implementation 'com.google.android.gms:play-services-location:18.0.0'
 
-    kapt "androidx.room:room-compiler:$vRoom"
+    //kapt "androidx.room:room-compiler:$vRoom"
 
-    api "com.github.x-syaifullah-x.android-module-base:base_presentation:$vAndroidModuleBase"
+    //api "com.github.x-syaifullah-x.android-module-base:base_presentation:$vAndroidModuleBase"
 
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
+    //api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
 
-    api "androidx.work:work-runtime:2.6.0-beta01"
-    api "androidx.work:work-runtime-ktx:2.6.0-beta01"
-    api "androidx.work:work-gcm:2.6.0-beta01"
-    androidTestImplementation "androidx.work:work-testing:2.6.0-beta01"
+    //api "androidx.work:work-runtime:2.6.0-beta01"
+    //api "androidx.work:work-runtime-ktx:2.6.0-beta01"
+    //api "androidx.work:work-gcm:2.6.0-beta01"
+    //androidTestImplementation "androidx.work:work-testing:2.6.0-beta01"
 }
