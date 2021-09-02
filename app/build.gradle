@@ -55,12 +55,12 @@ android {
 dependencies {
 
     implementation project(':fake_gps_history')
+
     implementation "id.xxx.module:auth:0.0.100"
     implementation "id.xxx.module:map_box:0.0.100"
 
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
 
-    /* Google Maps */
     implementation "com.google.android.gms:play-services-maps:17.0.1"
     implementation "com.google.android.gms:play-services-location:18.0.0"
 
