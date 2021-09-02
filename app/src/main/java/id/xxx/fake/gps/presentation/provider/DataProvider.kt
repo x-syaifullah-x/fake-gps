@@ -15,18 +15,12 @@ class DataProvider : ContentProvider() {
         private const val ID = 2
 
         init {
-            // content://id.xxx.prototipe/data
             URI_MATCHER.addURI(AUTHORITY, DataContract.DataColumns.PATH, NAME_TABLE)
-
-            // content://id.xxx.prototipe/data/id
             URI_MATCHER.addURI(AUTHORITY, "$${DataContract.DataColumns.PATH}/#", ID)
         }
     }
 
-    override fun onCreate(): Boolean {
-        /* open database */
-        return true
-    }
+    override fun onCreate() = true
 
     override fun query(
         uri: Uri, projection: Array<String>?, selection: String?,
@@ -41,7 +35,7 @@ class DataProvider : ContentProvider() {
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
         val result: Long = when (NAME_TABLE) {
-            URI_MATCHER.match(uri) -> 0 /* result insert to database */
+            URI_MATCHER.match(uri) -> 0
             else -> 0
         }
         return Uri.parse("${DataContract.DataColumns.CONTENT_URI}/$result")
@@ -53,9 +47,7 @@ class DataProvider : ContentProvider() {
     ): Int {
         val result = when (ID) {
             URI_MATCHER.match(uri) -> {
-                val id = "${uri.lastPathSegment}"
-                /* update database via id return result update */
-                1
+                val id = "${uri.lastPathSegment}"; 1
             }
             else -> 0
         }
@@ -66,9 +58,7 @@ class DataProvider : ContentProvider() {
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {
         val result = when (ID) {
             URI_MATCHER.match(uri) -> {
-                val id = "${uri.lastPathSegment}"
-                /* delete database via id return result update */
-                1
+                val id = "${uri.lastPathSegment}"; 1
             }
             else -> 0
         }
@@ -76,7 +66,5 @@ class DataProvider : ContentProvider() {
         return result
     }
 
-    override fun getType(uri: Uri): String? {
-        return ""
-    }
+    override fun getType(uri: Uri): String? = null
 }

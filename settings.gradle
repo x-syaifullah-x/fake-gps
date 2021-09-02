@@ -1,11 +1,12 @@
-include ':fake_gps_history:fake_gps_history_presentation'
-include ':fake_gps_history:fake_gps_history_domain'
-include ':fake_gps_history:fake_gps_history_data'
-include ':fake_gps_history'
 rootProject.name = "Fake Gps"
 
 include(
         ":app",
+
+        ":fake_gps_history",
+        ":fake_gps_history:fake_gps_history_presentation",
+        ":fake_gps_history:fake_gps_history_domain",
+        ":fake_gps_history:fake_gps_history_data",
 )
 
 //include ":auth_presentation"

@@ -65,11 +65,4 @@ dependencies {
     implementation "com.google.android.gms:play-services-location:18.0.0"
 
     kapt "androidx.room:room-compiler:$vRoom"
-
-    //api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
-
-    //api "androidx.work:work-runtime:2.6.0-beta01"
-    //api "androidx.work:work-runtime-ktx:2.6.0-beta01"
-    //api "androidx.work:work-gcm:2.6.0-beta01"
-    //androidTestImplementation "androidx.work:work-testing:2.6.0-beta01"
 }

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import id.xxx.fake.gps.history.domain.adapter.ItemSwipeLR
 import id.xxx.fake.gps.history.presentation.databinding.FragmentHistoryBinding
 import id.xxx.fake.gps.history.presentation.databinding.ItemHistoryBinding
-import id.xxx.module.domain.adapter.PagingAdapterViewHolder
+import id.xxx.module.domain.adapter.RecyclerViewViewHolder
 import id.xxx.module.presentation.binding.delegate.viewBinding
 import id.xxx.module.presentation.extension.setResult
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,14 +21,14 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
 
     private var isLoaded = false
 
-    private lateinit var adapterPaging: Adapter
+    private lateinit var adapterPaging: HistoryAdapter
 
     private val viewModel: HistoryViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapterPaging = Adapter { _, model ->
+        adapterPaging = HistoryAdapter { _, model ->
             setResult {
                 putExtra("latitude", model.latitude)
                 putExtra("longitude", model.longitude)
@@ -40,10 +40,10 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
             addItemDecoration(DividerItemDecoration(context, 1))
             ItemSwipeLR {
                 @Suppress("UNCHECKED_CAST")
-                val holder = (it as PagingAdapterViewHolder)
-                ItemHistoryBinding.bind(holder.itemView).data?.apply { viewModel.delete(this) }
+                val holder = (it as? RecyclerViewViewHolder<ItemHistoryBinding>)
+                viewModel.delete(holder?.binding?.data ?: return@ItemSwipeLR)
             }.attachToRecyclerView(this)
-            adapter = this@HistoryFragment.adapterPaging
+            adapter = adapterPaging
         }
 
         viewModel.data(requireActivity().intent.getStringExtra("USER_ID_DATA_EXTRA"))
