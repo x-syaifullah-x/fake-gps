@@ -2,8 +2,8 @@ package id.xxx.fake.gps.presentation.receiver
 
 import android.content.ContextWrapper
 import android.content.Intent
-import id.xxx.base.presentation.reciver.BaseReceiver
 import id.xxx.fake.gps.presentation.service.FakeLocationService
+import id.xxx.module.presentation.reciver.BaseReceiver
 
 class FakeStopReceiver : BaseReceiver() {
     override fun onReceive(context: ContextWrapper, intent: Intent?) {

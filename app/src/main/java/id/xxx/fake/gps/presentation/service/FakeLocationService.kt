@@ -7,13 +7,13 @@ import android.widget.Toast
 import androidx.core.content.getSystemService
 import androidx.work.Data
 import com.google.android.gms.maps.model.LatLng
-import id.xxx.base.domain.model.Resource
-import id.xxx.base.presentation.service.BaseService
 import id.xxx.fake.gps.mapper.toHistoryModel
 import id.xxx.fake.gps.presentation.helper.Network
 import id.xxx.fake.gps.presentation.ui.home.HomeFragment
 import id.xxx.fake.gps.presentation.workers.MyWorker
 import id.xxx.map.box.search.domain.usecase.IInteractor
+import id.xxx.module.domain.model.Resource
+import id.xxx.module.presentation.service.BaseService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.drop

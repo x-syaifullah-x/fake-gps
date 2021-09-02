@@ -1,23 +1,21 @@
 package id.xxx.fake.gps.history.presentation
 
 import android.os.Bundle
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
-import id.xxx.base.presentation.binding.activity.BaseActivityWithNavigation
-import id.xxx.base.presentation.binding.delegate.viewBinding
 import id.xxx.fake.gps.history.presentation.databinding.ActivityHistoryBinding
+import id.xxx.module.presentation.binding.activity.BaseActivity
+import id.xxx.module.presentation.binding.delegate.viewBinding
 import kotlin.random.Random
 
-class HistoryActivity : BaseActivityWithNavigation<ActivityHistoryBinding>() {
+class HistoryActivity : BaseActivity<ActivityHistoryBinding>() {
 
     override val binding by viewBinding(ActivityHistoryBinding::inflate)
-
-    override fun getIdNavHost() = R.id.nav_host_history
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbar)
-        setupActionBarWithNavController(navHostFragment.findNavController())
+        setupActionBarWithNavController(findNavController(R.id.nav_host_history))
         supportActionBar?.apply {
             setHomeButtonEnabled(true)
             setDisplayHomeAsUpEnabled(true)
@@ -25,7 +23,7 @@ class HistoryActivity : BaseActivityWithNavigation<ActivityHistoryBinding>() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return super.onSupportNavigateUp() || navHostFragment.findNavController().navigateUp()
+        return super.onSupportNavigateUp() || findNavController(R.id.nav_host_history).navigateUp()
     }
 
     companion object {

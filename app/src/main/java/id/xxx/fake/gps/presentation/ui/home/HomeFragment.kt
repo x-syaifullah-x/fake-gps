@@ -16,9 +16,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import id.xxx.auth.presentation.ui.AuthActivity
-import id.xxx.base.domain.model.Resource
-import id.xxx.base.domain.model.get
-import id.xxx.base.presentation.binding.delegate.viewBinding
 import id.xxx.fake.gps.R
 import id.xxx.fake.gps.databinding.FragmentHomeBinding
 import id.xxx.fake.gps.history.presentation.HistoryActivity
@@ -28,7 +25,10 @@ import id.xxx.fake.gps.presentation.ui.home.map.Map
 import id.xxx.fake.gps.presentation.utils.formatDouble
 import id.xxx.map.box.search.domain.model.PlacesModel
 import id.xxx.map.box.search.presentation.ui.SearchActivity
-import org.koin.android.viewmodel.ext.android.viewModel
+import id.xxx.module.domain.model.Resource
+import id.xxx.module.domain.model.Resource.Companion.whenNoReturn
+import id.xxx.module.presentation.binding.delegate.viewBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home),
     Map.Callback,
@@ -64,7 +64,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         })
 
         homeViewModel.currentUser.observe(viewLifecycleOwner) {
-            it.get(
+            it.whenNoReturn(
                 blockSuccess = { userModel ->
                     requireActivity().intent.putExtra(
                         USER_ID_DATA_EXTRA,
@@ -150,7 +150,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         when (view.id) {
             R.id.btn_logout -> {
                 homeViewModel.signOut().observe(viewLifecycleOwner) {
-                    it.get(
+                    it.whenNoReturn(
                         blockSuccess = {
                             requireActivity().intent.removeExtra(USER_ID_DATA_EXTRA)
                             binding.btnLogout.isVisible = false

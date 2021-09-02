@@ -39,7 +39,9 @@ android {
 
 dependencies {
 
-    //api "com.github.x-syaifullah-x.android-module-base:base_presentation:$vAndroidModuleBase"
+    implementation project(":fake_gps_history:fake_gps_history_domain")
 
-    //implementation project(":fake_gps_history:fake_gps_history_domain")
+    api "id.xxx.module:presentation:0.0.100"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
 }

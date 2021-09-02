@@ -4,16 +4,16 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import id.xxx.base.domain.model.ApiResponse
 import id.xxx.fake.gps.history.data.source.local.entity.HistoryEntity
 import id.xxx.fake.gps.history.data.source.remote.response.HistoryResponse
+import id.xxx.module.data.network.model.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 
 @ExperimentalPagingApi
 class HistoryRemoteMediator(
     private val blockGetPage: suspend () -> Long?,
-    private val blockRequest: suspend (Long?) -> Flow<ApiResponse<List<HistoryResponse>>>,
+    private val blockRequest: suspend (Long?) -> Flow<Result<List<HistoryResponse>>>,
     private val blockOnRequest: suspend (List<HistoryResponse>) -> Unit
 ) : BaseMediator<Long, HistoryResponse, Int, HistoryEntity>() {
 
@@ -32,14 +32,14 @@ class HistoryRemoteMediator(
         }
 
         return when (val apiResponse = request(page).first()) {
-            is ApiResponse.Success -> {
+            is Result.Success -> {
                 blockOnRequest(apiResponse.data)
                 MediatorResult.Success(false)
             }
-            is ApiResponse.Error -> {
+            is Result.Error -> {
                 MediatorResult.Error(apiResponse.error)
             }
-            is ApiResponse.Empty -> {
+            is Result.Empty -> {
                 MediatorResult.Success(endOfPaginationReached = true)
             }
         }
@@ -56,5 +56,5 @@ abstract class BaseMediator<PageType, ResponseType, Key : Any, Value : Any> :
 
     abstract suspend fun page(): PageType?
 
-    abstract suspend fun request(page: PageType?): Flow<ApiResponse<List<ResponseType>>>
+    abstract suspend fun request(page: PageType?): Flow<Result<List<ResponseType>>>
 }

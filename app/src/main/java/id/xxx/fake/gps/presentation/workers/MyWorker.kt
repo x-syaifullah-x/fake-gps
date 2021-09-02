@@ -3,15 +3,15 @@ package id.xxx.fake.gps.presentation.workers
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import id.xxx.base.domain.model.Resource
 import id.xxx.fake.gps.mapper.toHistoryModel
 import id.xxx.fake.gps.presentation.ui.home.HomeFragment
 import id.xxx.map.box.search.domain.usecase.IInteractor
+import id.xxx.module.domain.model.Resource
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import id.xxx.fake.gps.history.domain.usecase.IInteractor as IHistoryInteractor
 
 class MyWorker(

@@ -1,17 +1,15 @@
 package id.xxx.fake.gps.presentation.ui.home
 
-import androidx.navigation.fragment.findNavController
-import id.xxx.base.presentation.binding.activity.BaseActivityWithNavigation
-import id.xxx.base.presentation.binding.delegate.viewBinding
+import androidx.navigation.findNavController
 import id.xxx.fake.gps.R
 import id.xxx.fake.gps.databinding.ActivityHomeBinding
 import id.xxx.fake.gps.presentation.ui.home.map.Map
+import id.xxx.module.presentation.binding.activity.BaseActivity
+import id.xxx.module.presentation.binding.delegate.viewBinding
 
-class HomeActivity : BaseActivityWithNavigation<ActivityHomeBinding>() {
+class HomeActivity : BaseActivity<ActivityHomeBinding>() {
 
     override val binding by viewBinding(ActivityHomeBinding::inflate)
-
-    override fun getIdNavHost() = R.id.nav_host_main
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -25,6 +23,6 @@ class HomeActivity : BaseActivityWithNavigation<ActivityHomeBinding>() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return super.onSupportNavigateUp() || navHostFragment.findNavController().navigateUp()
+        return super.onSupportNavigateUp() || findNavController(R.id.nav_host_main).navigateUp()
     }
 }

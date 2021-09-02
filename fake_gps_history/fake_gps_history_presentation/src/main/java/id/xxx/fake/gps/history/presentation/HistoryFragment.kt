@@ -7,13 +7,13 @@ import androidx.fragment.app.Fragment
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
-import id.xxx.base.domain.adapter.HolderWithBinding
-import id.xxx.base.presentation.binding.delegate.viewBinding
-import id.xxx.base.presentation.extension.setResult
 import id.xxx.fake.gps.history.domain.adapter.ItemSwipeLR
 import id.xxx.fake.gps.history.presentation.databinding.FragmentHistoryBinding
 import id.xxx.fake.gps.history.presentation.databinding.ItemHistoryBinding
-import org.koin.android.viewmodel.ext.android.viewModel
+import id.xxx.module.domain.adapter.PagingAdapterViewHolder
+import id.xxx.module.presentation.binding.delegate.viewBinding
+import id.xxx.module.presentation.extension.setResult
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HistoryFragment : Fragment(R.layout.fragment_history) {
 
@@ -40,8 +40,8 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
             addItemDecoration(DividerItemDecoration(context, 1))
             ItemSwipeLR {
                 @Suppress("UNCHECKED_CAST")
-                val holderWithBinding = (it as HolderWithBinding<ItemHistoryBinding>)
-                holderWithBinding.binding.data?.apply { viewModel.delete(this) }
+                val holder = (it as PagingAdapterViewHolder)
+                ItemHistoryBinding.bind(holder.itemView).data?.apply { viewModel.delete(this) }
             }.attachToRecyclerView(this)
             adapter = this@HistoryFragment.adapterPaging
         }

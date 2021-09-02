@@ -4,9 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import id.xxx.base.domain.model.BaseEntity
 import id.xxx.fake.gps.history.data.source.local.entity.HistoryEntity.Companion.FLH_HISTORY_ID
 import id.xxx.fake.gps.history.data.source.local.entity.HistoryEntity.Companion.FLH_TABLE
+import id.xxx.module.domain.model.IModel
 
 @Entity(
     tableName = FLH_TABLE,
@@ -36,7 +36,7 @@ data class HistoryEntity(
     @ColumnInfo(name = FLH_DATE)
     val date: Long
 
-) : BaseEntity<Long> {
+) : IModel<Long> {
     companion object {
         const val FLH_TABLE = "fake_location_history"
         const val NO_USER_ID = "no-user-id"

@@ -2,10 +2,10 @@ package id.xxx.fake.gps.history.data.source.remote
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import id.xxx.base.domain.model.ApiResponse
-import id.xxx.base.domain.model.getApiResponseAsFlow
 import id.xxx.fake.gps.history.data.source.remote.response.HistoryResponse
 import id.xxx.fake.gps.history.data.source.remote.response.toHistoryFireStoreResponse
+import id.xxx.module.data.helper.DataHelper
+import id.xxx.module.data.network.model.Result
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
@@ -24,9 +24,9 @@ class RemoteDataSource(private val fireStore: FirebaseFirestore) {
                 val data = value?.documentChanges
                 val apiResponse =
                     if (!data.isNullOrEmpty()) {
-                        ApiResponse.Success(data.map { it.document.toHistoryFireStoreResponse() })
+                        id.xxx.module.data.network.model.Result.Success(data.map { it.document.toHistoryFireStoreResponse() })
                     } else {
-                        ApiResponse.Empty
+                        Result.Empty
                     }
                 offer(apiResponse)
             }; awaitClose { listenerRegistration.remove() }
@@ -36,7 +36,7 @@ class RemoteDataSource(private val fireStore: FirebaseFirestore) {
         userId: String,
         startAfterByDate: Long? = null,
         limit: Long = 20
-    ) = getApiResponseAsFlow(
+    ) = DataHelper.getAsFlow(
         blockFetch = {
             val col = collectionReference(userId)
                 .orderBy(HistoryResponse.DATE, Query.Direction.DESCENDING)

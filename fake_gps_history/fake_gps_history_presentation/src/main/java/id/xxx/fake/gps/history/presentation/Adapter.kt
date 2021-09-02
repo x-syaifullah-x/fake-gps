@@ -7,23 +7,26 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatTextView
-import id.xxx.base.domain.adapter.BaseAdapter
-import id.xxx.base.domain.adapter.HolderWithBinding
 import id.xxx.fake.gps.history.domain.model.HistoryModel
 import id.xxx.fake.gps.history.presentation.databinding.ItemHistoryBinding
+import id.xxx.module.domain.adapter.PagingAdapter
+import id.xxx.module.domain.adapter.PagingAdapterItemCallback
+import id.xxx.module.domain.adapter.PagingAdapterViewHolder
 
 class Adapter(
     private val onItemClick: (ItemHistoryBinding, HistoryModel) -> Unit = { _, _ -> }
-) : BaseAdapter.WithPaging3AndViewHolder<HistoryModel, ItemHistoryBinding>() {
+) : PagingAdapter<HistoryModel, PagingAdapterViewHolder>(PagingAdapterItemCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = HolderWithBinding(
-        ItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PagingAdapterViewHolder(
+        ItemHistoryBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
+            .root
     )
 
-    override fun onBindViewHolder(holder: HolderWithBinding<ItemHistoryBinding>, position: Int) {
+    override fun onBindViewHolder(holder: PagingAdapterViewHolder, position: Int) {
         val data = getItem(position) ?: return
-
-        holder.binding.apply {
+        val binding = ItemHistoryBinding.bind(holder.itemView)
+        binding.apply {
             this.data = data
 
             root.setOnClickListener { onItemClick(this, data) }
