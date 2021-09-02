@@ -1,7 +1,7 @@
 package id.xxx.fake.gps
 
+import android.app.Application
 import androidx.paging.ExperimentalPagingApi
-import com.google.android.play.core.splitcompat.SplitCompatApplication
 import id.xxx.fake.gps.di.AppModule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -13,7 +13,7 @@ import org.koin.core.logger.Level
 @FlowPreview
 @ExperimentalPagingApi
 @ExperimentalCoroutinesApi
-class App : SplitCompatApplication() {
+class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
