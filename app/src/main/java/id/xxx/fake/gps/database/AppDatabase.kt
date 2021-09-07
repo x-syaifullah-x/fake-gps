@@ -49,7 +49,6 @@ abstract class AppDatabase : RoomDatabase() {
 //                instance = Room.inMemoryDatabaseBuilder(app, AppDatabase::class.java)
                     .allowMainThreadQueries()
                     .fallbackToDestructiveMigration()
-//                    .openHelperFactory(SupportFactory(SQLiteDatabase.getBytes("xxx.base.data".toCharArray())))
                     .build()
             }
             return instance as AppDatabase

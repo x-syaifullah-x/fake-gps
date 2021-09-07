@@ -17,7 +17,9 @@ class FakeLocationNotification(context: Context) {
     private val intent = Intent(context, FakeStopReceiver::class.java).apply {
         action = "stop_fake_gps"
     }
-    private val stopPendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
+    private val stopPendingIntent = PendingIntent.getBroadcast(
+        context, 0, intent, 0
+    )
     private val notificationBuilder = NotificationCompat.Builder(context, "100")
         .setSmallIcon(R.mipmap.ic_launcher)
         .setContentTitle("Mock Running")

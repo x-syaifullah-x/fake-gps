@@ -36,20 +36,10 @@
             android:enabled="true"
             android:exported="false" />
 
-        <!--        <provider-->
-        <!--            android:name=".provider.DataProvider"-->
-        <!--            android:authorities="${applicationId}.provider"-->
-        <!--            android:enabled="true"-->
-        <!--            android:exported="true">-->
-        <!--         android:grantUriPermissions="true" -->
-        <!-- android:readPermission="com.e.myapplication.READ_DATABASE" -->
-        <!-- android:writePermission="com.e.myapplication.WRITE_DATABASE"> -->
-        <!--        </provider>-->
-
         <receiver
             android:name=".presentation.receiver.FakeStopReceiver"
             android:enabled="true"
-            android:exported="false" /> <!-- Maps Meta Data -->
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

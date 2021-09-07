@@ -15,7 +15,7 @@ import org.koin.core.component.inject
 import id.xxx.fake.gps.history.domain.usecase.IInteractor as IHistoryInteractor
 
 class MyWorker(
-    private val context: Context, workerParam: WorkerParameters
+    context: Context, workerParam: WorkerParameters
 ) : CoroutineWorker(context, workerParam), KoinComponent {
 
     companion object {
