@@ -10,17 +10,16 @@
   },
   "createdBy": {
     "gradle": {
-      "version": "7.0.2"
+      "version": "7.2"
     }
   },
   "variants": [
     {
-      "name": "releaseApiPublication",
+      "name": "releaseApiElements-published",
       "attributes": {
         "org.gradle.category": "library",
-        "org.gradle.dependency.bundling": "external",
-        "org.gradle.libraryelements": "aar",
-        "org.gradle.usage": "java-api"
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
       },
       "dependencies": [
         {
@@ -56,21 +55,20 @@
         {
           "name": "auth_domain-0.0.100.aar",
           "url": "auth_domain-0.0.100.aar",
-          "size": 37568,
-          "sha512": "c430b8c0817597ec8b0d57ba35ee3286b8616ebeb21b734942b751beadd57a1bc224607aca9cecdf10f14c93daeb708cfc9a7f1bd423bc5ebdacdc2e4dbaea7f",
-          "sha256": "b5a67f4fb14cf9225a42ca6d1c1576e0d22cef41d879e8d7e5314d505bd2f525",
-          "sha1": "a08e064e81c2810e55a4d8e19d2ee099fa174f77",
-          "md5": "aefd7288ad950a65850c11f8b233a4f2"
+          "size": 27733,
+          "sha512": "03b81790ae5190661495acb3fe8cb5c16646e43fdef11eb6e7d7683fc32d875f7564f6bf6d3a4d42046342e2648a1966505376cd6f29eaef1327cab2a15335d7",
+          "sha256": "fea85390883c56173ce737be6b33dbb5bb03a584dfbf01463754da2fc63f6e09",
+          "sha1": "8267e5b218200631a7aa590bb08fe963faaeeecd",
+          "md5": "b9423f36252349b4c8752907de488d85"
         }
       ]
     },
     {
-      "name": "releaseRuntimePublication",
+      "name": "releaseRuntimeElements-published",
       "attributes": {
         "org.gradle.category": "library",
-        "org.gradle.dependency.bundling": "external",
-        "org.gradle.libraryelements": "aar",
-        "org.gradle.usage": "java-runtime"
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
       },
       "dependencies": [
         {
@@ -127,11 +125,11 @@
         {
           "name": "auth_domain-0.0.100.aar",
           "url": "auth_domain-0.0.100.aar",
-          "size": 37568,
-          "sha512": "c430b8c0817597ec8b0d57ba35ee3286b8616ebeb21b734942b751beadd57a1bc224607aca9cecdf10f14c93daeb708cfc9a7f1bd423bc5ebdacdc2e4dbaea7f",
-          "sha256": "b5a67f4fb14cf9225a42ca6d1c1576e0d22cef41d879e8d7e5314d505bd2f525",
-          "sha1": "a08e064e81c2810e55a4d8e19d2ee099fa174f77",
-          "md5": "aefd7288ad950a65850c11f8b233a4f2"
+          "size": 27733,
+          "sha512": "03b81790ae5190661495acb3fe8cb5c16646e43fdef11eb6e7d7683fc32d875f7564f6bf6d3a4d42046342e2648a1966505376cd6f29eaef1327cab2a15335d7",
+          "sha256": "fea85390883c56173ce737be6b33dbb5bb03a584dfbf01463754da2fc63f6e09",
+          "sha1": "8267e5b218200631a7aa590bb08fe963faaeeecd",
+          "md5": "b9423f36252349b4c8752907de488d85"
         }
       ]
     }

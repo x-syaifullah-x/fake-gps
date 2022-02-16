@@ -10,38 +10,37 @@
   },
   "createdBy": {
     "gradle": {
-      "version": "7.0.2"
+      "version": "7.2"
     }
   },
   "variants": [
     {
-      "name": "releaseApiPublication",
+      "name": "releaseApiElements-published",
       "attributes": {
         "org.gradle.category": "library",
-        "org.gradle.dependency.bundling": "external",
-        "org.gradle.libraryelements": "aar",
-        "org.gradle.usage": "java-api"
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
       },
       "dependencies": [
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.4.1"
+          }
+        },
         {
           "group": "androidx.fragment",
           "module": "fragment-ktx",
           "version": {
-            "requires": "1.4.0"
-          }
-        },
-        {
-          "group": "androidx.lifecycle",
-          "module": "lifecycle-common",
-          "version": {
-            "requires": "2.4.0"
+            "requires": "1.4.1"
           }
         },
         {
           "group": "androidx.databinding",
           "module": "viewbinding",
           "version": {
-            "requires": "7.0.4"
+            "requires": "7.1.1"
           }
         },
         {
@@ -56,42 +55,41 @@
         {
           "name": "viewbinding-0.0.100.aar",
           "url": "viewbinding-0.0.100.aar",
-          "size": 12320,
-          "sha512": "d02f6a123cea3a51faf4f03bc0401f74aa6a8591c5e0deee26460144b843e082e95bcc99403cf543043bd7509b6c22d246ac5c2b0455f754c51dd912e2fefed2",
-          "sha256": "b875b787bfafa8fdfd6e00e1beeded4ce25313bfa509d94710276f126f560007",
-          "sha1": "e8624c4568b25fd38137a982dd2e0342f46ec67b",
-          "md5": "7a3b566baf6f1f71ff83058e9825a5b8"
+          "size": 22564,
+          "sha512": "89392febace0d377cb6416c9b5c972e19b4bd2ed997b51d1714a8e60e14b5c98608f8e381aa7bdc059b388f7443813c0f542b6345bc4218ca3b3e9bc875bb4a8",
+          "sha256": "68fb60de4c9db496651a85629479b1b26e9bbc95f30b92be979289f5d005a7c7",
+          "sha1": "62386781ee0179402af7b330ed1ba31811fd10dc",
+          "md5": "b7acbd98c6514c25896b0f1fa48982b5"
         }
       ]
     },
     {
-      "name": "releaseRuntimePublication",
+      "name": "releaseRuntimeElements-published",
       "attributes": {
         "org.gradle.category": "library",
-        "org.gradle.dependency.bundling": "external",
-        "org.gradle.libraryelements": "aar",
-        "org.gradle.usage": "java-runtime"
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
       },
       "dependencies": [
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.4.1"
+          }
+        },
         {
           "group": "androidx.fragment",
           "module": "fragment-ktx",
           "version": {
-            "requires": "1.4.0"
-          }
-        },
-        {
-          "group": "androidx.lifecycle",
-          "module": "lifecycle-common",
-          "version": {
-            "requires": "2.4.0"
+            "requires": "1.4.1"
           }
         },
         {
           "group": "androidx.databinding",
           "module": "viewbinding",
           "version": {
-            "requires": "7.0.4"
+            "requires": "7.1.1"
           }
         },
         {
@@ -113,11 +111,11 @@
         {
           "name": "viewbinding-0.0.100.aar",
           "url": "viewbinding-0.0.100.aar",
-          "size": 12320,
-          "sha512": "d02f6a123cea3a51faf4f03bc0401f74aa6a8591c5e0deee26460144b843e082e95bcc99403cf543043bd7509b6c22d246ac5c2b0455f754c51dd912e2fefed2",
-          "sha256": "b875b787bfafa8fdfd6e00e1beeded4ce25313bfa509d94710276f126f560007",
-          "sha1": "e8624c4568b25fd38137a982dd2e0342f46ec67b",
-          "md5": "7a3b566baf6f1f71ff83058e9825a5b8"
+          "size": 22564,
+          "sha512": "89392febace0d377cb6416c9b5c972e19b4bd2ed997b51d1714a8e60e14b5c98608f8e381aa7bdc059b388f7443813c0f542b6345bc4218ca3b3e9bc875bb4a8",
+          "sha256": "68fb60de4c9db496651a85629479b1b26e9bbc95f30b92be979289f5d005a7c7",
+          "sha1": "62386781ee0179402af7b330ed1ba31811fd10dc",
+          "md5": "b7acbd98c6514c25896b0f1fa48982b5"
         }
       ]
     }

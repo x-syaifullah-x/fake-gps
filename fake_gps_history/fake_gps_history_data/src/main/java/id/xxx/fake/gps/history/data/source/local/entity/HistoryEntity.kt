@@ -6,7 +6,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import id.xxx.fake.gps.history.data.source.local.entity.HistoryEntity.Companion.FLH_HISTORY_ID
 import id.xxx.fake.gps.history.data.source.local.entity.HistoryEntity.Companion.FLH_TABLE
-import id.xxx.module.common.model.IModel
+import id.xxx.module.model.IModel
 
 @Entity(
     tableName = FLH_TABLE,

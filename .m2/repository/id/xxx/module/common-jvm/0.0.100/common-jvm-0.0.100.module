@@ -10,7 +10,7 @@
   },
   "createdBy": {
     "gradle": {
-      "version": "7.0.2"
+      "version": "7.2"
     }
   },
   "variants": [
@@ -27,17 +27,17 @@
       },
       "dependencies": [
         {
+          "group": "id.xxx.module",
+          "module": "model",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
           "group": "org.jetbrains.kotlinx",
           "module": "kotlinx-coroutines-core",
           "version": {
             "requires": "1.5.2"
-          }
-        },
-        {
-          "group": "com.squareup.okhttp3",
-          "module": "okhttp-dnsoverhttps",
-          "version": {
-            "requires": "5.0.0-alpha.2"
           }
         },
         {
@@ -52,11 +52,11 @@
         {
           "name": "common-jvm-0.0.100.jar",
           "url": "common-jvm-0.0.100.jar",
-          "size": 88214,
-          "sha512": "8b6da76fd9c794c25094d09b94d95ea2e72daa3a63a6de963b362654b5f4855de52399b17ea0c3c0069554c1a2ff88426d1c81ca9feffd785155f81e18e567bb",
-          "sha256": "0725a98ad4bf38a4377b8d42600dfbd24f038ec0dcd22975d4be1350093764f7",
-          "sha1": "b3f57e54c52253b5fdb3d6a832ed48d46caecb6b",
-          "md5": "73b0912fecf8fe2b27fd2ed917b88f87"
+          "size": 59159,
+          "sha512": "ad7693e5493b6ff937178dfce0f64ce38210c8eb58c6b9de13d9c76b04f164e625e67672bd8fd38f63b4a9ffc7901c10de29cd2e6ccf7ab389288f455fd33bcb",
+          "sha256": "d180ca78aacf6b0aabc08222c03f82cdf477bd47d7430d62e461cb04a3fe61e7",
+          "sha1": "7112a2fd551adbad9635f955418a417123779840",
+          "md5": "ec8d18e737b9d167eb39639430176737"
         }
       ]
     },
@@ -73,17 +73,17 @@
       },
       "dependencies": [
         {
+          "group": "id.xxx.module",
+          "module": "model",
+          "version": {
+            "requires": "0.0.100"
+          }
+        },
+        {
           "group": "org.jetbrains.kotlinx",
           "module": "kotlinx-coroutines-core",
           "version": {
             "requires": "1.5.2"
-          }
-        },
-        {
-          "group": "com.squareup.okhttp3",
-          "module": "okhttp-dnsoverhttps",
-          "version": {
-            "requires": "5.0.0-alpha.2"
           }
         },
         {
@@ -98,11 +98,11 @@
         {
           "name": "common-jvm-0.0.100.jar",
           "url": "common-jvm-0.0.100.jar",
-          "size": 88214,
-          "sha512": "8b6da76fd9c794c25094d09b94d95ea2e72daa3a63a6de963b362654b5f4855de52399b17ea0c3c0069554c1a2ff88426d1c81ca9feffd785155f81e18e567bb",
-          "sha256": "0725a98ad4bf38a4377b8d42600dfbd24f038ec0dcd22975d4be1350093764f7",
-          "sha1": "b3f57e54c52253b5fdb3d6a832ed48d46caecb6b",
-          "md5": "73b0912fecf8fe2b27fd2ed917b88f87"
+          "size": 59159,
+          "sha512": "ad7693e5493b6ff937178dfce0f64ce38210c8eb58c6b9de13d9c76b04f164e625e67672bd8fd38f63b4a9ffc7901c10de29cd2e6ccf7ab389288f455fd33bcb",
+          "sha256": "d180ca78aacf6b0aabc08222c03f82cdf477bd47d7430d62e461cb04a3fe61e7",
+          "sha1": "7112a2fd551adbad9635f955418a417123779840",
+          "md5": "ec8d18e737b9d167eb39639430176737"
         }
       ]
     }

@@ -10,17 +10,16 @@
   },
   "createdBy": {
     "gradle": {
-      "version": "7.0.2"
+      "version": "7.2"
     }
   },
   "variants": [
     {
-      "name": "releaseApiPublication",
+      "name": "releaseApiElements-published",
       "attributes": {
         "org.gradle.category": "library",
-        "org.gradle.dependency.bundling": "external",
-        "org.gradle.libraryelements": "aar",
-        "org.gradle.usage": "java-api"
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
       },
       "dependencies": [
         {
@@ -48,21 +47,21 @@
           "group": "androidx.room",
           "module": "room-runtime",
           "version": {
-            "requires": "2.4.0-alpha04"
+            "requires": "2.4.1"
           }
         },
         {
           "group": "androidx.room",
           "module": "room-ktx",
           "version": {
-            "requires": "2.4.0-alpha04"
+            "requires": "2.4.1"
           }
         },
         {
           "group": "org.jetbrains.kotlin",
           "module": "kotlin-stdlib-jdk8",
           "version": {
-            "requires": "1.6.0"
+            "requires": "1.6.10"
           }
         }
       ],
@@ -70,21 +69,20 @@
         {
           "name": "map_box_search_data-0.0.100.aar",
           "url": "map_box_search_data-0.0.100.aar",
-          "size": 77348,
-          "sha512": "2b28428ca3e96885fe06f5224cecc4e2babbd9a621dee2f508fb063e2d7cdb6035ca2c8818da1ebafebed9072d6c2f2825498022906a039b52fbae5790d417ad",
-          "sha256": "77f9d8463a50ee2756e194da219dd65d7938a6c0066bd510296eb8ce6b40f845",
-          "sha1": "b682eb1950978b65b8f7ea7f8bc3e3f71f681321",
-          "md5": "2aa905e90de5a9d5b5f15f23dba14b5d"
+          "size": 77371,
+          "sha512": "efa8c5cf0099d181988a842bcd50ca36f5107232df4988cf14ec5e7fc41eaccfd98d107ab2c0c826b2b097fe744c95d80f8228a5a8c8752d9d78691dfeb2cb58",
+          "sha256": "6f1a4a3dcc924de4e9c9b576178f9c310f33df0f45f0575f666bb1d7387f7eb1",
+          "sha1": "f2bf497f8b49de1dab87c9528e6eb65cae6359a2",
+          "md5": "58dcbe162b8af3914c92702c1877e155"
         }
       ]
     },
     {
-      "name": "releaseRuntimePublication",
+      "name": "releaseRuntimeElements-published",
       "attributes": {
         "org.gradle.category": "library",
-        "org.gradle.dependency.bundling": "external",
-        "org.gradle.libraryelements": "aar",
-        "org.gradle.usage": "java-runtime"
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
       },
       "dependencies": [
         {
@@ -112,21 +110,21 @@
           "group": "androidx.room",
           "module": "room-runtime",
           "version": {
-            "requires": "2.4.0-alpha04"
+            "requires": "2.4.1"
           }
         },
         {
           "group": "androidx.room",
           "module": "room-ktx",
           "version": {
-            "requires": "2.4.0-alpha04"
+            "requires": "2.4.1"
           }
         },
         {
           "group": "org.jetbrains.kotlin",
           "module": "kotlin-stdlib-jdk8",
           "version": {
-            "requires": "1.6.0"
+            "requires": "1.6.10"
           }
         },
         {
@@ -148,11 +146,11 @@
         {
           "name": "map_box_search_data-0.0.100.aar",
           "url": "map_box_search_data-0.0.100.aar",
-          "size": 77348,
-          "sha512": "2b28428ca3e96885fe06f5224cecc4e2babbd9a621dee2f508fb063e2d7cdb6035ca2c8818da1ebafebed9072d6c2f2825498022906a039b52fbae5790d417ad",
-          "sha256": "77f9d8463a50ee2756e194da219dd65d7938a6c0066bd510296eb8ce6b40f845",
-          "sha1": "b682eb1950978b65b8f7ea7f8bc3e3f71f681321",
-          "md5": "2aa905e90de5a9d5b5f15f23dba14b5d"
+          "size": 77371,
+          "sha512": "efa8c5cf0099d181988a842bcd50ca36f5107232df4988cf14ec5e7fc41eaccfd98d107ab2c0c826b2b097fe744c95d80f8228a5a8c8752d9d78691dfeb2cb58",
+          "sha256": "6f1a4a3dcc924de4e9c9b576178f9c310f33df0f45f0575f666bb1d7387f7eb1",
+          "sha1": "f2bf497f8b49de1dab87c9528e6eb65cae6359a2",
+          "md5": "58dcbe162b8af3914c92702c1877e155"
         }
       ]
     }

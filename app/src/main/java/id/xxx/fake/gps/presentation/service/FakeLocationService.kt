@@ -12,7 +12,7 @@ import id.xxx.fake.gps.presentation.helper.Network
 import id.xxx.fake.gps.presentation.ui.home.HomeActivity
 import id.xxx.fake.gps.presentation.workers.MyWorker
 import id.xxx.map.box.search.domain.usecase.IInteractor
-import id.xxx.module.common.model.sealed.Resource
+import id.xxx.module.model.sealed.Resource
 import id.xxx.module.presentation.base.service.BaseService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

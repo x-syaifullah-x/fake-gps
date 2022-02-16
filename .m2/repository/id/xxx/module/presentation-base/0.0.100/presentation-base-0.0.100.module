@@ -10,38 +10,44 @@
   },
   "createdBy": {
     "gradle": {
-      "version": "7.0.2"
+      "version": "7.2"
     }
   },
   "variants": [
     {
-      "name": "releaseApiPublication",
+      "name": "releaseApiElements-published",
       "attributes": {
         "org.gradle.category": "library",
-        "org.gradle.dependency.bundling": "external",
-        "org.gradle.libraryelements": "aar",
-        "org.gradle.usage": "java-api"
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
       },
       "dependencies": [
-        {
-          "group": "id.xxx.module",
-          "module": "viewbinding",
-          "version": {
-            "requires": "0.0.100"
-          }
-        },
         {
           "group": "androidx.appcompat",
           "module": "appcompat",
           "version": {
-            "requires": "1.4.0"
+            "requires": "1.4.1"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core-ktx",
+          "version": {
+            "requires": "1.7.0"
           }
         },
         {
           "group": "androidx.lifecycle",
           "module": "lifecycle-service",
           "version": {
-            "requires": "2.4.0"
+            "requires": "2.4.1"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "viewbinding",
+          "version": {
+            "requires": "7.1.1"
           }
         },
         {
@@ -56,42 +62,48 @@
         {
           "name": "presentation-base-0.0.100.aar",
           "url": "presentation-base-0.0.100.aar",
-          "size": 30434,
-          "sha512": "6a225c59c81b224fe707cadc8e0a26ade0dee0cb09cd6b5b440fe9319404a1370de6413ff5bb4c6204ae3eefb7d97d63a6cafbee05a658118a97cf216d997614",
-          "sha256": "da7c48d859409c1114c382d0876060cea2d97dfd9dae8cebf2f9b3b22775d976",
-          "sha1": "512e90ed32004aef5477223facad58739a77e746",
-          "md5": "3a9f3550f8d2dd8ea51182a0b8bafee1"
+          "size": 30419,
+          "sha512": "b85c9ff7c9b15b8d390a1b16b8168581974f02286a45bfb11f0c293939c43a4090208d42077b269ac18f3db992bf212981f8e731f732b554d6ccc9af7a2c8d7f",
+          "sha256": "26f36059dc1114c8906cff47753493f71d31eea4ce15de76dd52c0dd41da153c",
+          "sha1": "7ca43a9a3cdf87e12fc13b7d0bb7421e53a6f399",
+          "md5": "aed7867aa60a1a998644a179de67f714"
         }
       ]
     },
     {
-      "name": "releaseRuntimePublication",
+      "name": "releaseRuntimeElements-published",
       "attributes": {
         "org.gradle.category": "library",
-        "org.gradle.dependency.bundling": "external",
-        "org.gradle.libraryelements": "aar",
-        "org.gradle.usage": "java-runtime"
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
       },
       "dependencies": [
-        {
-          "group": "id.xxx.module",
-          "module": "viewbinding",
-          "version": {
-            "requires": "0.0.100"
-          }
-        },
         {
           "group": "androidx.appcompat",
           "module": "appcompat",
           "version": {
-            "requires": "1.4.0"
+            "requires": "1.4.1"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core-ktx",
+          "version": {
+            "requires": "1.7.0"
           }
         },
         {
           "group": "androidx.lifecycle",
           "module": "lifecycle-service",
           "version": {
-            "requires": "2.4.0"
+            "requires": "2.4.1"
+          }
+        },
+        {
+          "group": "androidx.databinding",
+          "module": "viewbinding",
+          "version": {
+            "requires": "7.1.1"
           }
         },
         {
@@ -113,11 +125,11 @@
         {
           "name": "presentation-base-0.0.100.aar",
           "url": "presentation-base-0.0.100.aar",
-          "size": 30434,
-          "sha512": "6a225c59c81b224fe707cadc8e0a26ade0dee0cb09cd6b5b440fe9319404a1370de6413ff5bb4c6204ae3eefb7d97d63a6cafbee05a658118a97cf216d997614",
-          "sha256": "da7c48d859409c1114c382d0876060cea2d97dfd9dae8cebf2f9b3b22775d976",
-          "sha1": "512e90ed32004aef5477223facad58739a77e746",
-          "md5": "3a9f3550f8d2dd8ea51182a0b8bafee1"
+          "size": 30419,
+          "sha512": "b85c9ff7c9b15b8d390a1b16b8168581974f02286a45bfb11f0c293939c43a4090208d42077b269ac18f3db992bf212981f8e731f732b554d6ccc9af7a2c8d7f",
+          "sha256": "26f36059dc1114c8906cff47753493f71d31eea4ce15de76dd52c0dd41da153c",
+          "sha1": "7ca43a9a3cdf87e12fc13b7d0bb7421e53a6f399",
+          "md5": "aed7867aa60a1a998644a179de67f714"
         }
       ]
     }

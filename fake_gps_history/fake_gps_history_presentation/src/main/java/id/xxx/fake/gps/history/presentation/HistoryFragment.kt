@@ -17,7 +17,7 @@ import id.xxx.fake.gps.history.domain.adapter.ItemSwipeLR
 import id.xxx.fake.gps.history.presentation.databinding.FragmentHistoryBinding
 import id.xxx.fake.gps.history.presentation.databinding.ItemHistoryBinding
 import id.xxx.module.domain.adapter.RecyclerViewViewHolder
-import id.xxx.module.presentation.binding.ktx.viewBinding
+import id.xxx.module.view.binding.ktx.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HistoryFragment : Fragment(R.layout.fragment_history) {

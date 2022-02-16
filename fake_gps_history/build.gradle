@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion build_versions.compile_sdk_version
-    buildToolsVersion build_versions.build_tools_version
+    compileSdkVersion build_versions.compile_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        minSdkVersion build_versions.min_sdk_version
-        targetSdkVersion build_versions.target_sdk_version
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
         versionCode build_versions.version_code
         versionName build_versions.version_name
 

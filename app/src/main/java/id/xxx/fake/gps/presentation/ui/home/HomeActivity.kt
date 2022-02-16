@@ -25,7 +25,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
-import id.xxx.auth.domain.user.model.UserModel
+import id.xxx.auth.domain.model.UserModel
 import id.xxx.auth.presentation.ui.AuthActivity
 import id.xxx.fake.gps.R
 import id.xxx.fake.gps.databinding.ActivityMainBinding
@@ -36,10 +36,10 @@ import id.xxx.fake.gps.presentation.ui.home.map.Map
 import id.xxx.fake.gps.presentation.utils.formatDouble
 import id.xxx.map.box.search.domain.model.PlacesModel
 import id.xxx.map.box.search.presentation.ui.SearchActivity
-import id.xxx.module.common.model.sealed.Resource
-import id.xxx.module.common.model.sealed.Resource.Companion.whenNoReturn
+import id.xxx.module.model.sealed.Resource
+import id.xxx.module.model.sealed.Resource.Companion.whenNoReturn
 import id.xxx.module.presentation.binding.activity.BaseActivity
-import id.xxx.module.presentation.binding.ktx.viewBinding
+import id.xxx.module.view.binding.ktx.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.regex.Pattern
 
@@ -124,9 +124,9 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(),
             binding.appBarMain.navHostFragment.requestLayout()
         }
 
-        FakeLocation.isRunning.observe(this, {
+        FakeLocation.isRunning.observe(this) {
             binding.appBarMain.btnStopFake.visibility = if (it) View.VISIBLE else View.GONE
-        })
+        }
 
         val navHeaderMainBinding = NavHeaderMainBinding.bind(binding.navView.getHeaderView(0))
 

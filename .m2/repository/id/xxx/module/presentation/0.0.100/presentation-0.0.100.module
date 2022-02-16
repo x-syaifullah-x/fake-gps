@@ -10,17 +10,16 @@
   },
   "createdBy": {
     "gradle": {
-      "version": "7.0.2"
+      "version": "7.2"
     }
   },
   "variants": [
     {
-      "name": "releaseApiPublication",
+      "name": "releaseApiElements-published",
       "attributes": {
         "org.gradle.category": "library",
-        "org.gradle.dependency.bundling": "external",
-        "org.gradle.libraryelements": "aar",
-        "org.gradle.usage": "java-api"
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
       },
       "dependencies": [
         {
@@ -34,14 +33,14 @@
           "group": "com.google.android.material",
           "module": "material",
           "version": {
-            "requires": "1.4.0"
+            "requires": "1.5.0"
           }
         },
         {
           "group": "androidx.navigation",
           "module": "navigation-common",
           "version": {
-            "requires": "2.3.5"
+            "requires": "2.4.1"
           }
         },
         {
@@ -56,21 +55,20 @@
         {
           "name": "presentation-0.0.100.aar",
           "url": "presentation-0.0.100.aar",
-          "size": 38402,
-          "sha512": "280656982108c023ea3de6da18d8258eafdf1c6ab409e0510cb0b87adbd355e8a9864d98d8e736d48884b06502d60c2ba6dd4ecd4a111b48a03914bb57dedf7f",
-          "sha256": "b8ea6a6d962ae31c23878d6b63333dae9292ba8a17c1240e0ed11a1d30f78429",
-          "sha1": "f117ad4b8b4dbb6266b208c94a0ac9bc9496f83c",
-          "md5": "5f7290fc1c4924db49135dc6f49b8a6d"
+          "size": 43354,
+          "sha512": "7fbfa7fba058480fa62159097e21c4d1f8e82d0a59bbdc3458dd228f4b1ee811ea3b5c98dbdd43a0e49f235f413eed5710b4ef85aea070e66e9e2d0cef711dbb",
+          "sha256": "7eb892ab0ef8c1d20b223a7b96cda15cf6e061ee5285cef2c25dba02d320c325",
+          "sha1": "1bcd71bcdbf4531de1d779bd0c0cfce99687fa0e",
+          "md5": "24fad70fb9a0608ade4ec47d7b5d0fc6"
         }
       ]
     },
     {
-      "name": "releaseRuntimePublication",
+      "name": "releaseRuntimeElements-published",
       "attributes": {
         "org.gradle.category": "library",
-        "org.gradle.dependency.bundling": "external",
-        "org.gradle.libraryelements": "aar",
-        "org.gradle.usage": "java-runtime"
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
       },
       "dependencies": [
         {
@@ -84,14 +82,14 @@
           "group": "com.google.android.material",
           "module": "material",
           "version": {
-            "requires": "1.4.0"
+            "requires": "1.5.0"
           }
         },
         {
           "group": "androidx.navigation",
           "module": "navigation-common",
           "version": {
-            "requires": "2.3.5"
+            "requires": "2.4.1"
           }
         },
         {
@@ -113,11 +111,11 @@
         {
           "name": "presentation-0.0.100.aar",
           "url": "presentation-0.0.100.aar",
-          "size": 38402,
-          "sha512": "280656982108c023ea3de6da18d8258eafdf1c6ab409e0510cb0b87adbd355e8a9864d98d8e736d48884b06502d60c2ba6dd4ecd4a111b48a03914bb57dedf7f",
-          "sha256": "b8ea6a6d962ae31c23878d6b63333dae9292ba8a17c1240e0ed11a1d30f78429",
-          "sha1": "f117ad4b8b4dbb6266b208c94a0ac9bc9496f83c",
-          "md5": "5f7290fc1c4924db49135dc6f49b8a6d"
+          "size": 43354,
+          "sha512": "7fbfa7fba058480fa62159097e21c4d1f8e82d0a59bbdc3458dd228f4b1ee811ea3b5c98dbdd43a0e49f235f413eed5710b4ef85aea070e66e9e2d0cef711dbb",
+          "sha256": "7eb892ab0ef8c1d20b223a7b96cda15cf6e061ee5285cef2c25dba02d320c325",
+          "sha1": "1bcd71bcdbf4531de1d779bd0c0cfce99687fa0e",
+          "md5": "24fad70fb9a0608ade4ec47d7b5d0fc6"
         }
       ]
     }

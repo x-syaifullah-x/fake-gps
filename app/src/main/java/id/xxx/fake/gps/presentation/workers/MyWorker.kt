@@ -6,7 +6,7 @@ import androidx.work.WorkerParameters
 import id.xxx.fake.gps.mapper.toHistoryModel
 import id.xxx.fake.gps.presentation.ui.home.HomeActivity
 import id.xxx.map.box.search.domain.usecase.IInteractor
-import id.xxx.module.common.model.sealed.Resource
+import id.xxx.module.model.sealed.Resource
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first

@@ -6,7 +6,7 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import id.xxx.fake.gps.history.data.source.local.entity.HistoryEntity
 import id.xxx.fake.gps.history.data.source.remote.response.HistoryResponse
-import id.xxx.module.common.model.sealed.Result
+import id.xxx.module.model.sealed.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 

@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion build_versions.compile_sdk_version
-    buildToolsVersion build_versions.build_tools_version
+    compileSdkVersion build_versions.compile_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        minSdkVersion build_versions.min_sdk_version
-        targetSdkVersion build_versions.target_sdk_version
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
         versionCode build_versions.version_code
         versionName build_versions.version_name
 
@@ -41,10 +41,11 @@ dependencies {
 
     implementation project(":fake_gps_history:fake_gps_history_domain")
 
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-ui-ktx:$vNavigation"
+    implementation "androidx.navigation:navigation-fragment-ktx:$vNavigation"
 
     api "id.xxx.module:presentation:$vMyModule"
+    api "id.xxx.module:viewbinding:$vMyModule"
 
     testImplementation "junit:junit:$vJunit"
     testImplementation "org.mockito:mockito-core:$vMockito"

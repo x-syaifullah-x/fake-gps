@@ -6,7 +6,7 @@ import com.google.firebase.firestore.Query
 import id.xxx.fake.gps.history.data.source.remote.response.HistoryResponse
 import id.xxx.fake.gps.history.data.source.remote.response.toHistoryFireStoreResponse
 import id.xxx.module.common.helper.DataHelper
-import id.xxx.module.common.model.sealed.Result
+import id.xxx.module.model.sealed.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.tasks.await
 

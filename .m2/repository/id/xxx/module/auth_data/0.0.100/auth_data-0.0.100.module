@@ -10,17 +10,16 @@
   },
   "createdBy": {
     "gradle": {
-      "version": "7.0.2"
+      "version": "7.2"
     }
   },
   "variants": [
     {
-      "name": "debugApiPublication",
+      "name": "releaseApiElements-published",
       "attributes": {
         "org.gradle.category": "library",
-        "org.gradle.dependency.bundling": "external",
-        "org.gradle.libraryelements": "aar",
-        "org.gradle.usage": "java-api"
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
       },
       "dependencies": [
         {
@@ -41,14 +40,14 @@
           "group": "androidx.room",
           "module": "room-runtime",
           "version": {
-            "requires": "2.4.0"
+            "requires": "2.4.1"
           }
         },
         {
           "group": "androidx.room",
           "module": "room-ktx",
           "version": {
-            "requires": "2.4.0"
+            "requires": "2.4.1"
           }
         },
         {
@@ -74,17 +73,11 @@
         },
         {
           "group": "com.google.firebase",
-          "module": "firebase-auth",
-          "version": {
-            "requires": "21.0.1"
-          }
+          "module": "firebase-auth"
         },
         {
           "group": "com.google.firebase",
-          "module": "firebase-messaging",
-          "version": {
-            "requires": "23.0.0"
-          }
+          "module": "firebase-messaging"
         },
         {
           "group": "org.jetbrains.kotlinx",
@@ -105,38 +98,22 @@
         {
           "name": "auth_data-0.0.100.aar",
           "url": "auth_data-0.0.100.aar",
-          "size": 223847,
-          "sha512": "b39e7cb472aaf2b8d183fa6d42d71b546f2b96f0be78ecc78249c3f5065a000268bebd91581746bf6d91cb52e5f1330f14cf2334422494349795fb197f61f1ee",
-          "sha256": "eb38bd8ce992f0a4902b2fd0e6fb02598d6ccc6109987b631689f9407c89435c",
-          "sha1": "2e0279a26af4aa89d5ca4a6bc4c70ba62ecdd8ca",
-          "md5": "3c8b0071f6872948970a8735a2373c25"
+          "size": 181515,
+          "sha512": "818271dc6931b7064dbfd3221fba2e944b85f8d298bdb3823f361865b717f8148b04bb40f487f17e96c77d0274bdc9f13403e8761f6f4e098bc9a69d3c12281e",
+          "sha256": "8a9ede51ef1f19857292c637a43b91a65795421182779190d7d88060146e85de",
+          "sha1": "9750bdfd4c9488606e2bf4ab3da5d19861fb2f11",
+          "md5": "e352fe41606ad75cb085f7943f863d3d"
         }
       ]
     },
     {
-      "name": "debugRuntimePublication",
+      "name": "releaseRuntimeElements-published",
       "attributes": {
         "org.gradle.category": "library",
-        "org.gradle.dependency.bundling": "external",
-        "org.gradle.libraryelements": "aar",
-        "org.gradle.usage": "java-runtime"
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
       },
       "dependencies": [
-        {
-          "group": "org.jacoco",
-          "module": "org.jacoco.agent",
-          "version": {
-            "requires": "0.8.3"
-          },
-          "thirdPartyCompatibility": {
-            "artifactSelector": {
-              "name": "org.jacoco.agent",
-              "type": "jar",
-              "extension": "jar",
-              "classifier": "runtime"
-            }
-          }
-        },
         {
           "group": "id.xxx.module",
           "module": "common-jvm",
@@ -155,14 +132,14 @@
           "group": "androidx.room",
           "module": "room-runtime",
           "version": {
-            "requires": "2.4.0"
+            "requires": "2.4.1"
           }
         },
         {
           "group": "androidx.room",
           "module": "room-ktx",
           "version": {
-            "requires": "2.4.0"
+            "requires": "2.4.1"
           }
         },
         {
@@ -188,17 +165,11 @@
         },
         {
           "group": "com.google.firebase",
-          "module": "firebase-auth",
-          "version": {
-            "requires": "21.0.1"
-          }
+          "module": "firebase-auth"
         },
         {
           "group": "com.google.firebase",
-          "module": "firebase-messaging",
-          "version": {
-            "requires": "23.0.0"
-          }
+          "module": "firebase-messaging"
         },
         {
           "group": "org.jetbrains.kotlinx",
@@ -220,17 +191,28 @@
           "version": {
             "requires": "0.0.100"
           }
+        },
+        {
+          "group": "com.google.firebase",
+          "module": "firebase-bom",
+          "version": {
+            "requires": "29.0.3"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
         }
       ],
       "files": [
         {
           "name": "auth_data-0.0.100.aar",
           "url": "auth_data-0.0.100.aar",
-          "size": 223847,
-          "sha512": "b39e7cb472aaf2b8d183fa6d42d71b546f2b96f0be78ecc78249c3f5065a000268bebd91581746bf6d91cb52e5f1330f14cf2334422494349795fb197f61f1ee",
-          "sha256": "eb38bd8ce992f0a4902b2fd0e6fb02598d6ccc6109987b631689f9407c89435c",
-          "sha1": "2e0279a26af4aa89d5ca4a6bc4c70ba62ecdd8ca",
-          "md5": "3c8b0071f6872948970a8735a2373c25"
+          "size": 181515,
+          "sha512": "818271dc6931b7064dbfd3221fba2e944b85f8d298bdb3823f361865b717f8148b04bb40f487f17e96c77d0274bdc9f13403e8761f6f4e098bc9a69d3c12281e",
+          "sha256": "8a9ede51ef1f19857292c637a43b91a65795421182779190d7d88060146e85de",
+          "sha1": "9750bdfd4c9488606e2bf4ab3da5d19861fb2f11",
+          "md5": "e352fe41606ad75cb085f7943f863d3d"
         }
       ]
     }

@@ -1,7 +1,7 @@
 package id.xxx.fake.gps.history.domain.model
 
 import android.os.Parcelable
-import id.xxx.module.common.model.IModel
+import id.xxx.module.model.IModel
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

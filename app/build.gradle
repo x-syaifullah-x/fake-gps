@@ -6,13 +6,13 @@ plugins {
 
 android {
 
-    compileSdkVersion build_versions.compile_sdk_version
-    buildToolsVersion build_versions.build_tools_version
+    compileSdkVersion build_versions.compile_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
         applicationId "id.xxx.fake.gps"
-        minSdk build_versions.min_sdk_version
-        targetSdk build_versions.target_sdk_version
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
         versionCode build_versions.version_code
         versionName build_versions.version_name
 
@@ -91,6 +91,7 @@ android {
         exclude "org/**"
         exclude "**.properties"
         exclude "**.bin"
+        exclude "kotlin-tooling-metadata.json"
     }
 }
 
@@ -101,11 +102,11 @@ dependencies {
     implementation "id.xxx.module:auth:$vMyModule"
     implementation "id.xxx.module:map_box_search:$vMyModule"
 
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-fragment-ktx:$vNavigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$vNavigation"
 
-    implementation "com.google.android.gms:play-services-maps:18.0.1"
-    implementation "com.google.android.gms:play-services-location:19.0.0"
+    implementation "com.google.android.gms:play-services-maps:18.0.2"
+    implementation "com.google.android.gms:play-services-location:19.0.1"
 
     kapt "androidx.room:room-compiler:$vRoom"
 

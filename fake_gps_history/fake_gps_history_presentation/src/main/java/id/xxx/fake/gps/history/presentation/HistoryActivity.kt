@@ -5,7 +5,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import id.xxx.fake.gps.history.presentation.databinding.ActivityHistoryBinding
 import id.xxx.module.presentation.binding.activity.BaseActivity
-import id.xxx.module.presentation.binding.ktx.viewBinding
+import id.xxx.module.view.binding.ktx.viewBinding
 import kotlin.random.Random
 
 class HistoryActivity : BaseActivity<ActivityHistoryBinding>() {

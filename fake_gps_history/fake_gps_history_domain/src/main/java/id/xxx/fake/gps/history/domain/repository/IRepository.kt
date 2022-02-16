@@ -1,7 +1,7 @@
 package id.xxx.fake.gps.history.domain.repository
 
 import androidx.paging.PagingData
-import id.xxx.module.common.model.IModel
+import id.xxx.module.model.IModel
 import kotlinx.coroutines.flow.Flow
 
 interface IRepository<Model : IModel<*>> {
