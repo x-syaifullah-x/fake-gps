@@ -5,6 +5,11 @@ plugins {
 }
 
 android {
+
+    String packageName = "id.xxx.fake.gps.history.presentation"
+    namespace packageName
+    testNamespace "${packageName}.test"
+
     compileSdkVersion build_versions.compile_sdk
     buildToolsVersion build_versions.build_tools
 
@@ -25,11 +30,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = '17'
     }
     buildFeatures {
         viewBinding true
@@ -41,17 +46,17 @@ dependencies {
 
     implementation project(":fake_gps_history:fake_gps_history_domain")
 
-    implementation "androidx.navigation:navigation-ui-ktx:$vNavigation"
-    implementation "androidx.navigation:navigation-fragment-ktx:$vNavigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$vAndroidxNavigation"
+    implementation "androidx.navigation:navigation-fragment-ktx:$vAndroidxNavigation"
 
     api "id.xxx.module:presentation:$vMyModule"
     api "id.xxx.module:viewbinding:$vMyModule"
 
     testImplementation "junit:junit:$vJunit"
     testImplementation "org.mockito:mockito-core:$vMockito"
-    testImplementation "org.mockito:mockito-inline:$vMockito"
+    testImplementation "org.mockito:mockito-inline:$vMockitoInline"
 
-    androidTestImplementation "androidx.test.ext:junit-ktx:$vAndroidJunit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$vEspresso"
-    implementation "androidx.test.espresso:espresso-idling-resource:$vEspresso"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$vAndroidxTestExtJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$vAndroidxEspresso"
+    implementation "androidx.test.espresso:espresso-idling-resource:$vAndroidxEspresso"
 }

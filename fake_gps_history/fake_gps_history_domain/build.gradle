@@ -5,6 +5,11 @@ plugins {
 }
 
 android {
+
+    String packageName = "id.xxx.fake.gps.history.domain"
+    namespace packageName
+    testNamespace "${packageName}.test"
+
     compileSdkVersion build_versions.compile_sdk
     buildToolsVersion build_versions.build_tools
 
@@ -39,16 +44,15 @@ android {
 dependencies {
     api "id.xxx.module:common-android-domain:$vMyModule"
 
-    def vKoin = "3.1.3"
     api "io.insert-koin:koin-core:$vKoin"
     api "io.insert-koin:koin-android:$vKoin"
     testImplementation "io.insert-koin:koin-test:$vKoin"
 
     testImplementation "junit:junit:$vJunit"
     testImplementation "org.mockito:mockito-core:$vMockito"
-    testImplementation "org.mockito:mockito-inline:$vMockito"
+    testImplementation "org.mockito:mockito-inline:$vMockitoInline"
 
-    androidTestImplementation "androidx.test.ext:junit-ktx:$vAndroidJunit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$vEspresso"
-    implementation "androidx.test.espresso:espresso-idling-resource:$vEspresso"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$vAndroidxTestExtJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$vAndroidxEspresso"
+    implementation "androidx.test.espresso:espresso-idling-resource:$vAndroidxEspresso"
 }

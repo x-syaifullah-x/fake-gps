@@ -2,15 +2,20 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "kotlin-kapt"
+    id "com.google.gms.google-services"
 }
 
 android {
+
+    String packageName = "id.xxx.fake.gps"
+    namespace packageName
+    testNamespace "${packageName}.test"
 
     compileSdkVersion build_versions.compile_sdk
     buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        applicationId "id.xxx.fake.gps"
+        applicationId packageName
         minSdk build_versions.min_sdk
         targetSdk build_versions.target_sdk
         versionCode build_versions.version_code
@@ -22,47 +27,47 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
-    kotlinOptions { jvmTarget = "1.8" }
+    kotlinOptions { jvmTarget = "17" }
 
-    signingConfigs {
-
-        Properties properties = new Properties()
-        properties.load(project.rootProject.file("local.properties").newDataInputStream())
-
-        debug {
-            def debug_store_password = properties.getProperty("debug_store_password")
-            def debug_key_alias = properties.getProperty("debug_key_alias")
-            def debug_key_password = properties.getProperty("debug_key_password")
-            def debug_store_file = properties.getProperty("debug_store_file")
-
-            storeFile file(debug_store_file)
-            storePassword debug_store_password
-            keyAlias debug_key_alias
-            keyPassword debug_key_password
-        }
-
-        release {
-            def release_store_password = properties.getProperty("release_store_password")
-            def release_key_alias = properties.getProperty("release_key_alias")
-            def release_key_password = properties.getProperty("release_key_password")
-            def release_store_file = properties.getProperty("release_store_file")
-
-            storeFile file(release_store_file)
-            storePassword release_store_password
-            keyAlias release_key_alias
-            keyPassword release_key_password
-        }
-    }
+//    signingConfigs {
+//
+//        Properties properties = new Properties()
+//        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+//
+//        debug {
+//            def debug_store_password = properties.getProperty("debug_store_password")
+//            def debug_key_alias = properties.getProperty("debug_key_alias")
+//            def debug_key_password = properties.getProperty("debug_key_password")
+//            def debug_store_file = properties.getProperty("debug_store_file")
+//
+//            storeFile file(debug_store_file)
+//            storePassword debug_store_password
+//            keyAlias debug_key_alias
+//            keyPassword debug_key_password
+//        }
+//
+//        release {
+//            def release_store_password = properties.getProperty("release_store_password")
+//            def release_key_alias = properties.getProperty("release_key_alias")
+//            def release_key_password = properties.getProperty("release_key_password")
+//            def release_store_file = properties.getProperty("release_store_file")
+//
+//            storeFile file(release_store_file)
+//            storePassword release_store_password
+//            keyAlias release_key_alias
+//            keyPassword release_key_password
+//        }
+//    }
 
     buildTypes {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-            signingConfig signingConfigs.debug
+//            signingConfig signingConfigs.debug
         }
 
         release {
@@ -70,7 +75,7 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             debuggable false
             jniDebuggable false
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
         }
     }
 
@@ -84,15 +89,15 @@ android {
         unitTests.includeAndroidResources = true
     }
 
-    packagingOptions {
-        exclude "META-INF/**"
-        exclude "okhttp3/**"
-        exclude "kotlin/**"
-        exclude "org/**"
-        exclude "**.properties"
-        exclude "**.bin"
-        exclude "kotlin-tooling-metadata.json"
-    }
+//    packagingOptions {
+//        exclude "META-INF/**"
+//        exclude "okhttp3/**"
+//        exclude "kotlin/**"
+//        exclude "org/**"
+//        exclude "**.properties"
+//        exclude "**.bin"
+//        exclude "kotlin-tooling-metadata.json"
+//    }
 }
 
 dependencies {
@@ -102,19 +107,19 @@ dependencies {
     implementation "id.xxx.module:auth:$vMyModule"
     implementation "id.xxx.module:map_box_search:$vMyModule"
 
-    implementation "androidx.navigation:navigation-fragment-ktx:$vNavigation"
-    implementation "androidx.navigation:navigation-ui-ktx:$vNavigation"
+    implementation "androidx.navigation:navigation-fragment-ktx:$vAndroidxNavigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$vAndroidxNavigation"
 
-    implementation "com.google.android.gms:play-services-maps:18.0.2"
-    implementation "com.google.android.gms:play-services-location:19.0.1"
+    implementation "com.google.android.gms:play-services-maps:$vPlayServicesMaps"
+    implementation "com.google.android.gms:play-services-location:$vPlayServicesLocation"
 
-    kapt "androidx.room:room-compiler:$vRoom"
+    kapt "androidx.room:room-compiler:$vAndroidxRoom"
 
     testImplementation "junit:junit:$vJunit"
     testImplementation "org.mockito:mockito-core:$vMockito"
-    testImplementation "org.mockito:mockito-inline:$vMockito"
+    testImplementation "org.mockito:mockito-inline:$vMockitoInline"
 
-    androidTestImplementation "androidx.test.ext:junit-ktx:$vAndroidJunit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$vEspresso"
-    implementation "androidx.test.espresso:espresso-idling-resource:$vEspresso"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$vAndroidxTestExtJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$vAndroidxEspresso"
+    implementation "androidx.test.espresso:espresso-idling-resource:$vAndroidxEspresso"
 }

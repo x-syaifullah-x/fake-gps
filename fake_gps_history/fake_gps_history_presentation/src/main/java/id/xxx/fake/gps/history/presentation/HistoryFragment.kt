@@ -1,7 +1,6 @@
 package id.xxx.fake.gps.history.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.net.toUri
@@ -10,8 +9,6 @@ import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
-import androidx.paging.PagingDataDiffer
-import androidx.paging.map
 import androidx.recyclerview.widget.DividerItemDecoration
 import id.xxx.fake.gps.history.domain.adapter.ItemSwipeLR
 import id.xxx.fake.gps.history.presentation.databinding.FragmentHistoryBinding

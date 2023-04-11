@@ -13,5 +13,4 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@drawable/ic_splash_activity</item>
     </style>
-
 </resources>

@@ -4,6 +4,10 @@ plugins {
 }
 
 android {
+    String packageName = "id.xxx.fake.gps.history.data"
+    namespace packageName
+    testNamespace "${packageName}.test"
+
     compileSdkVersion build_versions.compile_sdk
     buildToolsVersion build_versions.build_tools
 
@@ -34,23 +38,23 @@ dependencies {
 
     implementation project(":fake_gps_history:fake_gps_history_domain")
 
-    api "androidx.room:room-paging:$vRoom"
-    api "androidx.room:room-runtime:$vRoom"
-    api "androidx.room:room-ktx:$vRoom"
-    androidTestImplementation "androidx.room:room-testing:$vRoom"
+    api "androidx.room:room-paging:$vAndroidxRoom"
+    api "androidx.room:room-runtime:$vAndroidxRoom"
+    api "androidx.room:room-ktx:$vAndroidxRoom"
+    androidTestImplementation "androidx.room:room-testing:$vAndroidxRoom"
 
     api platform("com.google.firebase:firebase-bom:$vFirebaseBom")
     api "com.google.firebase:firebase-firestore"
 
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$vKotlinxCoroutinesPlayServices"
 
     api "com.google.code.gson:gson:$vGson"
 
     testImplementation "junit:junit:$vJunit"
     testImplementation "org.mockito:mockito-core:$vMockito"
-    testImplementation "org.mockito:mockito-inline:$vMockito"
+    testImplementation "org.mockito:mockito-inline:$vMockitoInline"
 
-    androidTestImplementation "androidx.test.ext:junit-ktx:$vAndroidJunit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$vEspresso"
-    implementation "androidx.test.espresso:espresso-idling-resource:$vEspresso"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$vAndroidxTestExtJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$vAndroidxEspresso"
+    implementation "androidx.test.espresso:espresso-idling-resource:$vAndroidxEspresso"
 }
