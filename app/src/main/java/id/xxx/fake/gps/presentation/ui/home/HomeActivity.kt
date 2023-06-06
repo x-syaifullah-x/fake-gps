@@ -5,7 +5,6 @@ import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.isVisible
@@ -25,8 +24,6 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
-import id.xxx.auth.domain.model.UserModel
-import id.xxx.auth.presentation.ui.AuthActivity
 import id.xxx.fake.gps.R
 import id.xxx.fake.gps.databinding.ActivityMainBinding
 import id.xxx.fake.gps.databinding.NavHeaderMainBinding
@@ -58,7 +55,6 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(),
     private var googleMap: GoogleMap? = null
     private var map: Map? = null
     private var signOutObserver: Observer<Resource<Boolean>>? = null
-    private var currentUserObserver: Observer<Resource<UserModel>>? = null
 
     private val homeViewModel by viewModel<HomeViewModel>()
 
@@ -128,61 +124,65 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(),
             binding.appBarMain.btnStopFake.visibility = if (it) View.VISIBLE else View.GONE
         }
 
-        val navHeaderMainBinding = NavHeaderMainBinding.bind(binding.navView.getHeaderView(0))
+        observerUser()
+    }
 
-        val regex =
-            Pattern.compile("@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE).toRegex()
+    private fun observerUser() {
+        //        val navHeaderMainBinding = NavHeaderMainBinding.bind(binding.navView.getHeaderView(0))
 
-        if (currentUserObserver == null)
-            currentUserObserver = Observer<Resource<UserModel>> {
-                it.whenNoReturn(
-                    blockLoading = {
-                        binding.progressCircular.visibility = View.VISIBLE
-                        binding.btnSignIn.visibility = View.GONE
-                        binding.btnSignOut.visibility = View.GONE
-                    },
-                    blockSuccess = { userModel ->
-                        val name = userModel.email?.replace(regex, "")
-                        navHeaderMainBinding.navHeaderTextName.text = name
-                        navHeaderMainBinding.navHeaderTextEmail.text = userModel.email
-                        intent.putExtra(USER_ID_DATA_EXTRA, userModel.id)
+//        val regex =
+//            Pattern.compile("@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE).toRegex()
 
-                        binding.progressCircular.visibility = View.GONE
-                        binding.btnSignOut.isVisible = true
-                        binding.btnSignIn.isVisible = false
-                    },
-                    blockEmpty = {
-                        binding.progressCircular.visibility = View.GONE
-                        binding.btnSignOut.visibility = View.GONE
-                        binding.btnSignIn.visibility = View.VISIBLE
-                        intent.removeExtra(USER_ID_DATA_EXTRA)
-                        navHeaderMainBinding.navHeaderTextName.text =
-                            getString(R.string.nav_header_title)
-                        navHeaderMainBinding.navHeaderTextEmail.text =
-                            getString(R.string.nav_header_subtitle)
-                    },
-                    blockError = { _, e ->
-                        Toast.makeText(this, e.localizedMessage, Toast.LENGTH_LONG).show()
-                        binding.progressCircular.visibility = View.GONE
-                        binding.btnSignOut.visibility = View.GONE
-                        binding.btnSignIn.visibility = View.GONE
-                        binding.btnTryAgain.visibility = View.VISIBLE
-                        binding.btnTryAgain.setOnClickListener {
-                            binding.btnTryAgain.visibility = View.GONE
-                            binding.progressCircular.visibility = View.VISIBLE
-                            if (currentUserObserver != null) {
-                                homeViewModel.currentUser.removeObserver(
-                                    currentUserObserver ?: return@setOnClickListener
-                                )
-                                homeViewModel.currentUser.observe(
-                                    this, currentUserObserver ?: return@setOnClickListener
-                                )
-                            }
-                        }
-                    }
-                )
-            }
-        homeViewModel.currentUser.observe(this, currentUserObserver ?: return)
+        //        if (currentUserObserver == null)
+//            currentUserObserver = Observer<Resource<UserModel>> {
+//                it.whenNoReturn(
+//                    blockLoading = {
+//                        binding.progressCircular.visibility = View.VISIBLE
+//                        binding.btnSignIn.visibility = View.GONE
+//                        binding.btnSignOut.visibility = View.GONE
+//                    },
+//                    blockSuccess = { userModel ->
+//                        val name = userModel.email?.replace(regex, "")
+//                        navHeaderMainBinding.navHeaderTextName.text = name
+//                        navHeaderMainBinding.navHeaderTextEmail.text = userModel.email
+//                        intent.putExtra(USER_ID_DATA_EXTRA, userModel.id)
+//
+//                        binding.progressCircular.visibility = View.GONE
+//                        binding.btnSignOut.isVisible = true
+//                        binding.btnSignIn.isVisible = false
+//                    },
+//                    blockEmpty = {
+//                        binding.progressCircular.visibility = View.GONE
+//                        binding.btnSignOut.visibility = View.GONE
+//                        binding.btnSignIn.visibility = View.VISIBLE
+//                        intent.removeExtra(USER_ID_DATA_EXTRA)
+//                        navHeaderMainBinding.navHeaderTextName.text =
+//                            getString(R.string.nav_header_title)
+//                        navHeaderMainBinding.navHeaderTextEmail.text =
+//                            getString(R.string.nav_header_subtitle)
+//                    },
+//                    blockError = { _, e ->
+//                        Toast.makeText(this, e.localizedMessage, Toast.LENGTH_LONG).show()
+//                        binding.progressCircular.visibility = View.GONE
+//                        binding.btnSignOut.visibility = View.GONE
+//                        binding.btnSignIn.visibility = View.GONE
+//                        binding.btnTryAgain.visibility = View.VISIBLE
+//                        binding.btnTryAgain.setOnClickListener {
+//                            binding.btnTryAgain.visibility = View.GONE
+//                            binding.progressCircular.visibility = View.VISIBLE
+//                            if (currentUserObserver != null) {
+//                                homeViewModel.currentUser.removeObserver(
+//                                    currentUserObserver ?: return@setOnClickListener
+//                                )
+//                                homeViewModel.currentUser.observe(
+//                                    this, currentUserObserver ?: return@setOnClickListener
+//                                )
+//                            }
+//                        }
+//                    }
+//                )
+//            }
+//        homeViewModel.currentUser.observe(this, currentUserObserver ?: return)
     }
 
     override fun onRequestPermissionsResult(
@@ -286,34 +286,42 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(),
                 fakeStart(position.latitude, position.longitude)
                 removeSingleMarker()
             }
+
             binding.appBarMain.btnStopFake.id ->
                 stopService(Intent(baseContext, FakeLocationService::class.java))
+
             binding.appBarMain.toolbar.id ->
                 searchActivityResultLauncher.launch(Intent(v.context, SearchActivity::class.java))
-            binding.btnSignIn.id ->
-                authActivityResultLauncher.launch(Intent(this, AuthActivity::class.java))
-            binding.btnSignOut.id -> {
-                if (signOutObserver == null)
-                    signOutObserver = Observer<Resource<Boolean>> {
-                        it.whenNoReturn(
-                            blockLoading = {
-                                binding.progressCircular.visibility = View.VISIBLE
-                                binding.btnSignOut.visibility = View.GONE
-                            },
-                            blockSuccess = {
-                                homeViewModel.signOut()
-                                    .removeObserver(signOutObserver ?: return@whenNoReturn)
-                            },
-                            blockError = { _, _ ->
-                                binding.progressCircular.visibility = View.GONE
-                                binding.btnSignOut.visibility = View.VISIBLE
-                                homeViewModel.signOut()
-                                    .removeObserver(signOutObserver ?: return@whenNoReturn)
-                            }
-                        )
-                    }
-                homeViewModel.signOut().observe(this, signOutObserver ?: return)
+
+            binding.btnSignIn.id -> {
+                throw NotImplementedError()
+//                authActivityResultLauncher.launch(Intent(this, AuthActivity::class.java))
             }
+
+            binding.btnSignOut.id -> {
+                throw NotImplementedError()
+//                if (signOutObserver == null)
+//                    signOutObserver = Observer {
+//                        it.whenNoReturn(
+//                            blockLoading = {
+//                                binding.progressCircular.visibility = View.VISIBLE
+//                                binding.btnSignOut.visibility = View.GONE
+//                            },
+//                            blockSuccess = {
+//                                homeViewModel.signOut()
+//                                    .removeObserver(signOutObserver ?: return@whenNoReturn)
+//                            },
+//                            blockError = { _, _ ->
+//                                binding.progressCircular.visibility = View.GONE
+//                                binding.btnSignOut.visibility = View.VISIBLE
+//                                homeViewModel.signOut()
+//                                    .removeObserver(signOutObserver ?: return@whenNoReturn)
+//                            }
+//                        )
+//                    }
+//                homeViewModel.signOut().observe(this, signOutObserver ?: return)
+            }
+
             binding.appBarMain.aciMyPosition.id ->
                 googleMap?.apply { map?.enableMyPosition(this@HomeActivity, this) }
         }
