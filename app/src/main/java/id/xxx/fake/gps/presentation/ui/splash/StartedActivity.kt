@@ -1,12 +1,12 @@
 package id.xxx.fake.gps.presentation.ui.splash
 
+import android.app.Activity
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import id.xxx.fake.gps.presentation.ui.home.HomeActivity
-import id.xxx.module.presentation.base.ktx.hideSystemUI
-import id.xxx.module.presentation.base.ktx.startActivity
+import id.xxx.module.ktx.hideSystemUI
+import id.xxx.module.ktx.startActivity
 
-class SplashActivity : AppCompatActivity() {
+class StartedActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,6 +14,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
-        if (hasFocus) hideSystemUI()
+        if (hasFocus)
+            hideSystemUI()
     }
 }

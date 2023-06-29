@@ -106,6 +106,9 @@ dependencies {
 
 //    implementation "id.xxx.module:auth:$vMyModule"
     implementation "id.xxx.module:map_box_search:$vMyModule"
+    def vMyModuleNew = "0.0.001"
+    implementation "id.xxx.module:common-android:$vMyModuleNew"
+    implementation "id.xxx.module:activity-ktx:$vMyModuleNew"
 
     implementation "androidx.navigation:navigation-fragment-ktx:$vAndroidxNavigation"
     implementation "androidx.navigation:navigation-ui-ktx:$vAndroidxNavigation"

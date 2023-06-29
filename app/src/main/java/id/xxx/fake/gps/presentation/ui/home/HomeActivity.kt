@@ -26,21 +26,17 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import id.xxx.fake.gps.R
 import id.xxx.fake.gps.databinding.ActivityMainBinding
-import id.xxx.fake.gps.databinding.NavHeaderMainBinding
 import id.xxx.fake.gps.presentation.service.FakeLocation
 import id.xxx.fake.gps.presentation.service.FakeLocationService
 import id.xxx.fake.gps.presentation.ui.home.map.Map
 import id.xxx.fake.gps.presentation.utils.formatDouble
 import id.xxx.map.box.search.domain.model.PlacesModel
 import id.xxx.map.box.search.presentation.ui.SearchActivity
+import id.xxx.module.activity.base.BaseAppCompatActivityViewBinding
 import id.xxx.module.model.sealed.Resource
-import id.xxx.module.model.sealed.Resource.Companion.whenNoReturn
-import id.xxx.module.presentation.binding.activity.BaseActivity
-import id.xxx.module.view.binding.ktx.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.regex.Pattern
 
-class HomeActivity : BaseActivity<ActivityMainBinding>(),
+class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
     Map.Callback,
     GoogleMap.OnCameraMoveListener,
     GoogleMap.OnMarkerClickListener,
@@ -75,15 +71,13 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(),
     private val authActivityResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {}
 
-    override val binding by viewBinding(ActivityMainBinding::inflate)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.appBarMain.appBar.outlineProvider = null
-        setSupportActionBar(binding.appBarMain.toolbar)
+        viewBinding.appBarMain.appBar.outlineProvider = null
+        setSupportActionBar(viewBinding.appBarMain.toolbar)
 
-        val drawerLayout: DrawerLayout = binding.drawerLayout
-        val navView: NavigationView = binding.navView
+        val drawerLayout: DrawerLayout = viewBinding.drawerLayout
+        val navView: NavigationView = viewBinding.navView
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.nav_home, R.id.nav_history, R.id.nav_favorite), drawerLayout
         )
@@ -93,19 +87,19 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(),
         val smf = (supportFragmentManager.findFragmentById(R.id.map_view) as SupportMapFragment)
         map = Map(smf, this)
 
-        binding.appBarMain.btnStopFake.setOnClickListener(this)
-        binding.appBarMain.btnStartFake.setOnClickListener(this)
-        binding.appBarMain.toolbar.setOnClickListener(this)
-        binding.btnSignIn.setOnClickListener(this)
-        binding.btnSignOut.setOnClickListener(this)
-        binding.appBarMain.aciMyPosition.setOnClickListener(this)
+        viewBinding.appBarMain.btnStopFake.setOnClickListener(this)
+        viewBinding.appBarMain.btnStartFake.setOnClickListener(this)
+        viewBinding.appBarMain.toolbar.setOnClickListener(this)
+        viewBinding.btnSignIn.setOnClickListener(this)
+        viewBinding.btnSignOut.setOnClickListener(this)
+        viewBinding.appBarMain.aciMyPosition.setOnClickListener(this)
 
         val navHostFragmentLayoutParams: CoordinatorLayout.LayoutParams =
-            binding.appBarMain.navHostFragment.layoutParams as CoordinatorLayout.LayoutParams
+            viewBinding.appBarMain.navHostFragment.layoutParams as CoordinatorLayout.LayoutParams
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, arguments ->
             val isHomePage = destination.id == R.id.nav_home
-            binding.appBarMain.mapView.isVisible = isHomePage
-            binding.appBarMain.navHostFragment.isVisible = !isHomePage
+            viewBinding.appBarMain.mapView.isVisible = isHomePage
+            viewBinding.appBarMain.navHostFragment.isVisible = !isHomePage
             if (arguments != null) {
                 val lat = arguments.getString("latitude")?.toDouble()
                 val lon = arguments.getString("longitude")?.toDouble()
@@ -114,14 +108,14 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(),
                 }
             }
 
-            binding.appBarMain.aciMyPosition.isVisible = isHomePage
+            viewBinding.appBarMain.aciMyPosition.isVisible = isHomePage
             navHostFragmentLayoutParams.behavior =
                 if (isHomePage) null else AppBarLayout.ScrollingViewBehavior()
-            binding.appBarMain.navHostFragment.requestLayout()
+            viewBinding.appBarMain.navHostFragment.requestLayout()
         }
 
         FakeLocation.isRunning.observe(this) {
-            binding.appBarMain.btnStopFake.visibility = if (it) View.VISIBLE else View.GONE
+            viewBinding.appBarMain.btnStopFake.visibility = if (it) View.VISIBLE else View.GONE
         }
 
         observerUser()
@@ -215,7 +209,7 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(),
         googleMap?.let { googleMap ->
             markerOptions?.let { markerOptions ->
                 markerPosition = googleMap.addMarker(markerOptions)?.apply {
-                    binding.appBarMain.btnStartFake.visibility = View.VISIBLE
+                    viewBinding.appBarMain.btnStartFake.visibility = View.VISIBLE
                     showInfoWindow()
                     googleMap.setOnMarkerClickListener(this@HomeActivity)
 //                    googleMap.setOnInfoWindowClickListener(this@HomeFragment)
@@ -234,7 +228,7 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(),
     }
 
     private fun addSingleMaker(latLng: LatLng) {
-        binding.appBarMain.btnStartFake.visibility = View.GONE
+        viewBinding.appBarMain.btnStartFake.visibility = View.GONE
         googleMap?.clear()
         moveCamera(latLng.latitude, latLng.longitude)
         markerOptions = MarkerOptions().title("show location").position(latLng)
@@ -269,7 +263,7 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(),
     }
 
     private fun removeSingleMarker() {
-        binding.appBarMain.btnStartFake.visibility = View.GONE
+        viewBinding.appBarMain.btnStartFake.visibility = View.GONE
         googleMap?.clear()
         markerPosition = null
         markerOptions = null
@@ -282,23 +276,23 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(),
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            binding.appBarMain.btnStartFake.id -> markerPosition?.apply {
+            viewBinding.appBarMain.btnStartFake.id -> markerPosition?.apply {
                 fakeStart(position.latitude, position.longitude)
                 removeSingleMarker()
             }
 
-            binding.appBarMain.btnStopFake.id ->
+            viewBinding.appBarMain.btnStopFake.id ->
                 stopService(Intent(baseContext, FakeLocationService::class.java))
 
-            binding.appBarMain.toolbar.id ->
+            viewBinding.appBarMain.toolbar.id ->
                 searchActivityResultLauncher.launch(Intent(v.context, SearchActivity::class.java))
 
-            binding.btnSignIn.id -> {
+            viewBinding.btnSignIn.id -> {
                 throw NotImplementedError()
 //                authActivityResultLauncher.launch(Intent(this, AuthActivity::class.java))
             }
 
-            binding.btnSignOut.id -> {
+            viewBinding.btnSignOut.id -> {
                 throw NotImplementedError()
 //                if (signOutObserver == null)
 //                    signOutObserver = Observer {
@@ -322,7 +316,7 @@ class HomeActivity : BaseActivity<ActivityMainBinding>(),
 //                homeViewModel.signOut().observe(this, signOutObserver ?: return)
             }
 
-            binding.appBarMain.aciMyPosition.id ->
+            viewBinding.appBarMain.aciMyPosition.id ->
                 googleMap?.apply { map?.enableMyPosition(this@HomeActivity, this) }
         }
     }
