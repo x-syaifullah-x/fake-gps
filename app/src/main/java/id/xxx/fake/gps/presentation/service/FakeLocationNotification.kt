@@ -1,9 +1,12 @@
 package id.xxx.fake.gps.presentation.service
 
+import android.Manifest
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.android.gms.maps.model.LatLng
@@ -12,7 +15,8 @@ import id.xxx.fake.gps.presentation.receiver.FakeStopReceiver
 import id.xxx.fake.gps.presentation.ui.home.HomeActivity
 import id.xxx.fake.gps.presentation.utils.formatDouble
 
-class FakeLocationNotification(context: Context) {
+class FakeLocationNotification(private val context: Context) {
+
     private val notificationManager = NotificationManagerCompat.from(context)
     private val intent = Intent(context, FakeStopReceiver::class.java).apply {
         action = "stop_fake_gps"
@@ -59,7 +63,18 @@ class FakeLocationNotification(context: Context) {
         return notification
     }
 
-    fun show() = notificationManager.notify(ID_MOCK_NOTIFICATION, getNotification())
+    fun show() {
+        val checkSelfPermission =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
+            } else {
+                PackageManager.PERMISSION_GRANTED
+            }
+        if (checkSelfPermission != PackageManager.PERMISSION_GRANTED) {
+            throw NotImplementedError("")
+        }
+        notificationManager.notify(ID_MOCK_NOTIFICATION, getNotification())
+    }
 
     fun cancel() = notificationManager.cancel(ID_MOCK_NOTIFICATION)
 
