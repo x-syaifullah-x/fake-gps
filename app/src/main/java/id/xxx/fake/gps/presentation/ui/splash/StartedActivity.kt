@@ -3,8 +3,8 @@ package id.xxx.fake.gps.presentation.ui.splash
 import android.app.Activity
 import android.os.Bundle
 import id.xxx.fake.gps.presentation.ui.home.HomeActivity
-import id.xxx.module.ktx.hideSystemUI
-import id.xxx.module.ktx.startActivity
+import id.xxx.module.activity.ktx.hideSystemUI
+import id.xxx.module.activity.ktx.startActivity
 
 class StartedActivity : Activity() {
 

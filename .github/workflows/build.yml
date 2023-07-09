@@ -2,9 +2,9 @@ name: build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ no-run ]
 #  pull_request:
-#    branches: [ started ]
+#    branches: [ master ]
 
 jobs:
   build:

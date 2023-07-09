@@ -9,7 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.Observer
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -30,9 +30,14 @@ import id.xxx.fake.gps.presentation.service.FakeLocation
 import id.xxx.fake.gps.presentation.service.FakeLocationService
 import id.xxx.fake.gps.presentation.ui.home.map.Map
 import id.xxx.fake.gps.presentation.utils.formatDouble
+import id.xxx.fake.gps.user_handle.data.UserHandleRepo
+import id.xxx.fake.gps.user_handle.domain.UserHandleModel
 import id.xxx.map.box.search.domain.model.PlacesModel
 import id.xxx.map.box.search.presentation.ui.SearchActivity
 import id.xxx.module.activity.base.BaseAppCompatActivityViewBinding
+import id.xxx.module.auth.model.User
+import id.xxx.module.intent.ktx.getParcelableExtra
+import id.xxx.module.intent.ktx.getSerializableExtra
 import id.xxx.module.model.sealed.Resource
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -50,7 +55,6 @@ class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
     private var location: Location? = null
     private var googleMap: GoogleMap? = null
     private var map: Map? = null
-    private var signOutObserver: Observer<Resource<Boolean>>? = null
 
     private val homeViewModel by viewModel<HomeViewModel>()
 
@@ -62,14 +66,22 @@ class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
                 val data =
-                    it.data?.getParcelableExtra<PlacesModel>(SearchActivity.DATA_EXTRA)
+                    it.data.getParcelableExtra<PlacesModel>(SearchActivity.DATA_EXTRA)
                         ?: return@registerForActivityResult
                 addSingleMaker(LatLng(data.latitude, data.longitude))
             }
         }
 
+    private val userRepo by lazy { UserHandleRepo.getInstance(this) }
+
     private val authActivityResultLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {}
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult ->
+            val data = activityResult.data
+            val result =
+                data.getSerializableExtra<User>(id.xxx.module.auth.MainActivity.RESULT_USER)
+            if (result != null)
+                userRepo.signIn(model = UserHandleModel(uid = result.uid))
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,6 +134,33 @@ class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
     }
 
     private fun observerUser() {
+        userRepo
+            .currentUser()
+            .asLiveData()
+            .observe(this) { it: Resource<UserHandleModel> ->
+                when (it) {
+                    is Resource.Loading -> {
+                        viewBinding.btnSignOut.isVisible = false
+                        viewBinding.btnSignIn.isVisible = false
+                    }
+
+                    is Resource.Success -> {
+                        viewBinding.btnSignOut.isVisible = true
+                        viewBinding.btnSignIn.isVisible = false
+                    }
+
+                    is Resource.Empty -> {
+                        viewBinding.btnSignOut.isVisible = false
+                        viewBinding.btnSignIn.isVisible = true
+                    }
+
+                    is Resource.Error -> {
+                        viewBinding.btnSignOut.isVisible = false
+                        viewBinding.btnSignIn.isVisible = true
+                    }
+                }
+            }
+
         //        val navHeaderMainBinding = NavHeaderMainBinding.bind(binding.navView.getHeaderView(0))
 
 //        val regex =
@@ -262,13 +301,6 @@ class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
         }
     }
 
-    private fun removeSingleMarker() {
-        viewBinding.appBarMain.btnStartFake.visibility = View.GONE
-        googleMap?.clear()
-        markerPosition = null
-        markerOptions = null
-    }
-
     override fun onMarkerClick(p0: Marker): Boolean {
         removeSingleMarker()
         return true
@@ -288,12 +320,13 @@ class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
                 searchActivityResultLauncher.launch(Intent(v.context, SearchActivity::class.java))
 
             viewBinding.btnSignIn.id -> {
-                throw NotImplementedError()
-//                authActivityResultLauncher.launch(Intent(this, AuthActivity::class.java))
+                authActivityResultLauncher.launch(
+                    Intent(this, id.xxx.module.auth.MainActivity::class.java)
+                )
             }
 
             viewBinding.btnSignOut.id -> {
-                throw NotImplementedError()
+                userRepo.signOut()
 //                if (signOutObserver == null)
 //                    signOutObserver = Observer {
 //                        it.whenNoReturn(
@@ -319,5 +352,12 @@ class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
             viewBinding.appBarMain.aciMyPosition.id ->
                 googleMap?.apply { map?.enableMyPosition(this@HomeActivity, this) }
         }
+    }
+
+    private fun removeSingleMarker() {
+        viewBinding.appBarMain.btnStartFake.visibility = View.GONE
+        googleMap?.clear()
+        markerPosition = null
+        markerOptions = null
     }
 }

@@ -9,5 +9,16 @@ include(
         ":fake_gps_history:fake_gps_history_data",
 )
 
+/* load local module */
 //include ":auth_presentation"
 //project(":auth_presentation").projectDir = file("../auth/auth_presentation")
+
+String userName = System.getProperty("user.name")
+if (userName == "xxx") {
+    /* https://docs.gradle.org/current/userguide/build_cache.html */
+    buildCache {
+        local {
+            directory = new File("${rootDir}/.gradle", "build-cache")
+        }
+    }
+}
