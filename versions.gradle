@@ -11,28 +11,41 @@ build_versions.version_name = "$version.$major.$minor"
 ext.build_versions = build_versions
 
 ext {
-    vGradle = "8.0.2"
-    vKotlin = "1.8.20"
+    vGradle = "8.1.0"
+    vKotlin = "1.8.22"
 
-    vJunit = "4.13.2"
-    vMockito = "5.3.1"
-    vMockitoInline = "5.2.0"
-
-    vAndroidxTestExtJunit = "1.1.5"
+    vAndroidxActivity = "1.7.2"
+    vAndroidxAnnotation = "1.6.0"
+    vAndroidxAnnotationExperimental = "1.3.0"
+    vAndroidxAppCompat = "1.6.1"
+    vAndroidxArchCore = "2.2.0"
+    vAndroidxCore = "1.10.0"
+    vAndroidxConstrainLayout = "2.1.4"
+    vAndroidxCustomview = "1.1.0"
+    vAndroidxDrawerLayout = "1.2.0"
     vAndroidxEspresso = "3.5.1"
+    vAndroidxFragment = "1.5.7"
     vAndroidxLifecycle = "2.6.1"
     vAndroidxNavigation = "2.6.0"
-    vAndroidxRoom = "2.5.1"
+    vAndroidxRoom = "2.5.2"
+    vAndroidxTestCore = "1.5.0"
+    vAndroidxTestRules = "1.5.0"
+    vAndroidxTestExtJunit = "1.1.5"
+    vAndroidxTestMonitor = "1.6.1"
     vAndroidxWork = "2.8.1"
-
-    vFirebaseBom = "29.0.3"
-    vGson = "2.10.1" //"2.8.8"
-    vMyModule = "0.0.100"
-    vKotlinxCoroutinesPlayServices = "1.1.1"
-    vGoogleServices = "4.3.15"
-    vPlayServicesMaps = "18.1.0" // old 18.0.2
-    vPlayServicesLocation = "21.0.1" // old 19.0.1
+    vFirebaseFirestore = "24.7.0"
+    vGmsGoogleServices = "4.3.15"
+    vGmsPlayServicesMaps = "18.1.0"
+    vGmsPlayServicesLocation = "21.0.1"
+    vGson = "2.10.1"
+    vJunit = "4.13.2"
+    vKotlinCoroutines = "1.7.1"
     vKoin = "3.1.3" // more than 3.1.3 will error
+    vKsp = "1.8.22-1.0.11"
+    vMyModule = "0.0.100"
+    vMyModuleNew = "0.0.001"
+    vMockito = "5.3.1"
+    vMockitoInline = "5.2.0"
 }
 
 def addRepos(RepositoryHandler handler) {

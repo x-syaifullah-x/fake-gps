@@ -1,8 +1,8 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
-    id "kotlin-kapt"
     id "com.google.gms.google-services"
+    id "com.google.devtools.ksp"
 }
 
 android {
@@ -81,6 +81,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        //noinspection DataBindingWithoutKapt
         dataBinding true
     }
 
@@ -104,9 +105,7 @@ dependencies {
 
     implementation project(":fake_gps_history")
 
-//    implementation "id.xxx.module:auth:$vMyModule"
     implementation "id.xxx.module:map_box_search:$vMyModule"
-    def vMyModuleNew = "0.0.001"
     implementation "id.xxx.module:common-android:$vMyModuleNew"
     implementation "id.xxx.module:activity-ktx:$vMyModuleNew"
     implementation "id.xxx.module:auth:$vMyModuleNew"
@@ -116,10 +115,10 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$vAndroidxNavigation"
     implementation "androidx.work:work-runtime-ktx:$vAndroidxWork"
 
-    implementation "com.google.android.gms:play-services-maps:$vPlayServicesMaps"
-    implementation "com.google.android.gms:play-services-location:$vPlayServicesLocation"
+    implementation "com.google.android.gms:play-services-maps:$vGmsPlayServicesMaps"
+    implementation "com.google.android.gms:play-services-location:$vGmsPlayServicesLocation"
 
-    kapt "androidx.room:room-compiler:$vAndroidxRoom"
+    ksp "androidx.room:room-compiler:$vAndroidxRoom"
 
     testImplementation "junit:junit:$vJunit"
     testImplementation "org.mockito:mockito-core:$vMockito"

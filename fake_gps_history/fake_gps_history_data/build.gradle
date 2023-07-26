@@ -43,10 +43,9 @@ dependencies {
     api "androidx.room:room-ktx:$vAndroidxRoom"
     androidTestImplementation "androidx.room:room-testing:$vAndroidxRoom"
 
-    api platform("com.google.firebase:firebase-bom:$vFirebaseBom")
-    api "com.google.firebase:firebase-firestore"
+    api "com.google.firebase:firebase-firestore:24.7.0"
 
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$vKotlinxCoroutinesPlayServices"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$vKotlinCoroutines"
 
     api "com.google.code.gson:gson:$vGson"
 
