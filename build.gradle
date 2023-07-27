@@ -87,14 +87,15 @@ allprojects {
 
     String userName = System.getProperty("user.name")
     if (userName == "xxx") {
-        String tmpPath = "/tmp"
-        boolean projectIsInCacheDir = projectDir.path.contains(tmpPath)
-        if (!projectIsInCacheDir) {
-            buildDir = "${tmpPath}/android/studio/project/${rootProject.name}/${project.name}/build"
+        String userHomeDir = System.getProperty("user.home")
+        String userCacheDir = "${userHomeDir}/.cache"
+        boolean projectInCacheDir = projectDir.path.contains(userCacheDir)
+        if (!projectInCacheDir) {
+            buildDir = "${userCacheDir}/android/studio/project/${rootProject.name}/${project.name}/build"
         }
     }
 }
 
-tasks.register('clean', Delete) {
+tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }

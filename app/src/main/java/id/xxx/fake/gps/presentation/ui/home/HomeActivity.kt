@@ -10,6 +10,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -30,8 +31,9 @@ import id.xxx.fake.gps.presentation.service.FakeLocation
 import id.xxx.fake.gps.presentation.service.FakeLocationService
 import id.xxx.fake.gps.presentation.ui.home.map.Map
 import id.xxx.fake.gps.presentation.utils.formatDouble
-import id.xxx.fake.gps.user_handle.data.UserHandleRepo
+import id.xxx.fake.gps.user_handle.data.repository.UserHandleRepoRepository
 import id.xxx.fake.gps.user_handle.domain.UserHandleModel
+import id.xxx.fake.gps.user_handle.domain.usecase.UserHandleImpl
 import id.xxx.map.box.search.domain.model.PlacesModel
 import id.xxx.map.box.search.presentation.ui.SearchActivity
 import id.xxx.module.activity.base.BaseAppCompatActivityViewBinding
@@ -39,7 +41,7 @@ import id.xxx.module.auth.model.User
 import id.xxx.module.intent.ktx.getParcelableExtra
 import id.xxx.module.intent.ktx.getSerializableExtra
 import id.xxx.module.model.sealed.Resource
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlinx.coroutines.launch
 
 class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
     Map.Callback,
@@ -56,8 +58,6 @@ class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
     private var googleMap: GoogleMap? = null
     private var map: Map? = null
 
-    private val homeViewModel by viewModel<HomeViewModel>()
-
     private val navHostFragment by lazy {
         supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
     }
@@ -72,15 +72,20 @@ class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
             }
         }
 
-    private val userRepo by lazy { UserHandleRepo.getInstance(this) }
+    private val userRepo by lazy {
+        UserHandleImpl.getInstance(UserHandleRepoRepository.getInstance(this))
+    }
 
     private val authActivityResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult ->
             val data = activityResult.data
             val result =
                 data.getSerializableExtra<User>(id.xxx.module.auth.MainActivity.RESULT_USER)
-            if (result != null)
-                userRepo.signIn(model = UserHandleModel(uid = result.uid))
+            if (result != null) {
+                lifecycleScope.launch {
+                    userRepo.signIn(model = UserHandleModel(uid = result.uid))
+                }
+            }
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -326,7 +331,7 @@ class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
             }
 
             viewBinding.btnSignOut.id -> {
-                userRepo.signOut()
+                lifecycleScope.launch { userRepo.signOut() }
 //                if (signOutObserver == null)
 //                    signOutObserver = Observer {
 //                        it.whenNoReturn(

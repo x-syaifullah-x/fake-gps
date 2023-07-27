@@ -1,34 +1,33 @@
-package id.xxx.fake.gps.user_handle.data
+package id.xxx.fake.gps.user_handle.data.repository
 
 import android.content.Context
-import id.xxx.fake.gps.user_handle.data.local.UserDB
-import id.xxx.fake.gps.user_handle.data.local.UserDataSourceLocal
-import id.xxx.fake.gps.user_handle.data.local.UserEntity
-import id.xxx.fake.gps.user_handle.domain.IUserHandle
+import id.xxx.fake.gps.user_handle.data.source.local.UserDB
+import id.xxx.fake.gps.user_handle.data.source.local.UserDataSourceLocal
+import id.xxx.fake.gps.user_handle.data.source.local.UserEntity
+import id.xxx.fake.gps.user_handle.domain.repository.IUserHandleRepository
 import id.xxx.fake.gps.user_handle.domain.UserHandleModel
 import id.xxx.module.model.sealed.Resource
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class UserHandleRepo private constructor(
+class UserHandleRepoRepository private constructor(
     private val dataSourceLocal: UserDataSourceLocal
-) : IUserHandle {
+) : IUserHandleRepository {
 
     companion object {
 
         @Volatile
-        private var INSTANCE: IUserHandle? = null
+        private var INSTANCE: IUserHandleRepository? = null
 
         fun getInstance(context: Context) =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: run {
                     val dao = UserDB.getInstance(context).userDao
                     val dataSourceLocal = UserDataSourceLocal.getInstance(dao)
-                    UserHandleRepo(dataSourceLocal).also { INSTANCE = it }
+                    UserHandleRepoRepository(dataSourceLocal).also { INSTANCE = it }
                 }
             }
     }
@@ -46,16 +45,16 @@ class UserHandleRepo private constructor(
         }
     }
 
-    override fun signIn(model: UserHandleModel) {
-        CoroutineScope(Dispatchers.IO).launch {
+    override suspend fun signIn(model: UserHandleModel) {
+        withContext(Dispatchers.IO) {
             dataSourceLocal.signIn(
                 UserEntity(uid = model.uid)
             )
         }
     }
 
-    override fun signOut() {
-        CoroutineScope(Dispatchers.IO).launch {
+    override suspend fun signOut() {
+        withContext(Dispatchers.IO) {
             dataSourceLocal.signOut()
         }
     }

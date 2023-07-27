@@ -1,4 +1,4 @@
-package id.xxx.fake.gps.user_handle.data.local
+package id.xxx.fake.gps.user_handle.data.source.local
 
 import android.content.Context
 import androidx.room.Database

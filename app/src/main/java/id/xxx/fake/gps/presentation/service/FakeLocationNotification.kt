@@ -1,7 +1,11 @@
 package id.xxx.fake.gps.presentation.service
 
 import android.Manifest
-import android.app.*
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationChannelGroup
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -22,7 +26,8 @@ class FakeLocationNotification(private val context: Context) {
         action = "stop_fake_gps"
     }
     private val stopPendingIntent = PendingIntent.getBroadcast(
-        context, 0, intent, 0
+//        context, 0, intent, 0
+        context, 0, intent, PendingIntent.FLAG_IMMUTABLE
     )
     private val notificationBuilder = NotificationCompat.Builder(context, "100")
         .setSmallIcon(R.mipmap.ic_launcher)
@@ -33,8 +38,10 @@ class FakeLocationNotification(private val context: Context) {
         .addAction(R.drawable.ic_action_call, "Stop", stopPendingIntent)
         .setContentIntent(
             PendingIntent.getActivity(
-                context, 0, Intent(context, HomeActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK), 0
+                context, 0,
+                Intent(context, HomeActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK),
+                PendingIntent.FLAG_IMMUTABLE // 0
             )
         )
 
