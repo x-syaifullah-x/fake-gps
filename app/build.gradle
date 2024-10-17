@@ -18,8 +18,8 @@ android {
         applicationId packageName
         minSdk build_versions.min_sdk
         targetSdk build_versions.target_sdk
-        versionCode build_versions.version_code
-        versionName build_versions.version_name
+        versionCode build_versions.code
+        versionName build_versions.name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -27,47 +27,33 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
 
-    kotlinOptions { jvmTarget = "17" }
+    kotlinOptions { JavaVersion.VERSION_21.toString() }
 
-//    signingConfigs {
-//
-//        Properties properties = new Properties()
-//        properties.load(project.rootProject.file("local.properties").newDataInputStream())
-//
-//        debug {
-//            def debug_store_password = properties.getProperty("debug_store_password")
-//            def debug_key_alias = properties.getProperty("debug_key_alias")
-//            def debug_key_password = properties.getProperty("debug_key_password")
-//            def debug_store_file = properties.getProperty("debug_store_file")
-//
-//            storeFile file(debug_store_file)
-//            storePassword debug_store_password
-//            keyAlias debug_key_alias
-//            keyPassword debug_key_password
-//        }
-//
-//        release {
-//            def release_store_password = properties.getProperty("release_store_password")
-//            def release_key_alias = properties.getProperty("release_key_alias")
-//            def release_key_password = properties.getProperty("release_key_password")
-//            def release_store_file = properties.getProperty("release_store_file")
-//
-//            storeFile file(release_store_file)
-//            storePassword release_store_password
-//            keyAlias release_key_alias
-//            keyPassword release_key_password
-//        }
-//    }
+    signingConfigs {
+        debug {
+            storeFile file("${rootDir}/key_store/debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+
+        release {
+            storeFile file("${rootDir}/key_store/debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
 
     buildTypes {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-//            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.debug
         }
 
         release {
@@ -75,7 +61,7 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             debuggable false
             jniDebuggable false
-//            signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
         }
     }
 
@@ -108,8 +94,9 @@ dependencies {
     implementation "id.xxx.module:map_box_search:$vMyModule"
     implementation "id.xxx.module:common-android:$vMyModuleNew"
     implementation "id.xxx.module:activity-ktx:$vMyModuleNew"
-    implementation "id.xxx.module:auth:$vMyModuleNew"
-    implementation "id.xxx.module:intent-ktx:$vMyModuleNew"
+    def vaMyModule = "1.0.0"
+    implementation "id.xxx.module:auth:$vaMyModule"
+    implementation "id.xxx.module:intent-ktx:$vaMyModule"
 
     implementation "androidx.navigation:navigation-fragment-ktx:$vAndroidxNavigation"
     implementation "androidx.navigation:navigation-ui-ktx:$vAndroidxNavigation"
@@ -125,6 +112,6 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:$vMockitoInline"
 
     androidTestImplementation "androidx.test.ext:junit-ktx:$vAndroidxTestExtJunit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$vAndroidxEspresso"
-    implementation "androidx.test.espresso:espresso-idling-resource:$vAndroidxEspresso"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$vAndroidxTestEspresso"
+    implementation "androidx.test.espresso:espresso-idling-resource:$vAndroidxTestEspresso"
 }

@@ -1,5 +1,18 @@
-rootProject.name = "Fake Gps"
+pluginManagement {
+    apply from: "versions.gradle"
 
+    addRepos(repositories)
+}
+
+plugins {
+    //noinspection GradlePluginVersion
+    id "com.android.application" version "$vGradle" apply false
+    id "org.jetbrains.kotlin.android" version "$vKotlin" apply false
+    id "com.google.devtools.ksp" version "$vKsp" apply false
+    id "com.google.gms.google-services" version "$vComGoogleGmsGoogleServices" apply false
+}
+
+rootProject.name = "Fake Gps"
 include(
         ":app",
 
@@ -12,13 +25,3 @@ include(
 /* load local module */
 //include ":auth_presentation"
 //project(":auth_presentation").projectDir = file("../auth/auth_presentation")
-
-String userName = System.getProperty("user.name")
-if (userName == "xxx") {
-    /* https://docs.gradle.org/current/userguide/build_cache.html */
-    buildCache {
-        local {
-            directory = new File("${rootDir}/.gradle", "build-cache")
-        }
-    }
-}

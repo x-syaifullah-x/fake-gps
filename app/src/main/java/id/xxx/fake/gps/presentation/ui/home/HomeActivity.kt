@@ -36,14 +36,15 @@ import id.xxx.fake.gps.user_handle.domain.UserHandleModel
 import id.xxx.fake.gps.user_handle.domain.usecase.UserHandleImpl
 import id.xxx.map.box.search.domain.model.PlacesModel
 import id.xxx.map.box.search.presentation.ui.SearchActivity
-import id.xxx.module.activity.base.BaseAppCompatActivityViewBinding
-import id.xxx.module.auth.model.User
+import id.xxx.module.activity.base.BaseAppCompatActivity
+import id.xxx.module.auth.model.SignModel
 import id.xxx.module.intent.ktx.getParcelableExtra
 import id.xxx.module.intent.ktx.getSerializableExtra
 import id.xxx.module.model.sealed.Resource
+import id.xxx.module.viewbinding.ktx.viewBinding
 import kotlinx.coroutines.launch
 
-class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
+class HomeActivity : BaseAppCompatActivity(),
     Map.Callback,
     GoogleMap.OnCameraMoveListener,
     GoogleMap.OnMarkerClickListener,
@@ -52,6 +53,8 @@ class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
     companion object {
         const val USER_ID_DATA_EXTRA = "USER_ID_DATA_EXTRA"
     }
+
+    private val viewBinding by viewBinding<ActivityMainBinding>()
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private var location: Location? = null
@@ -80,7 +83,7 @@ class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult ->
             val data = activityResult.data
             val result =
-                data.getSerializableExtra<User>(id.xxx.module.auth.MainActivity.RESULT_USER)
+                data.getSerializableExtra<SignModel>(id.xxx.module.auth.AuthActivity.RESULT_USER)
             if (result != null) {
                 lifecycleScope.launch {
                     userRepo.signIn(model = UserHandleModel(uid = result.uid))
@@ -90,6 +93,9 @@ class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setContentView(viewBinding.root)
+
         viewBinding.appBarMain.appBar.outlineProvider = null
         setSupportActionBar(viewBinding.appBarMain.toolbar)
 
@@ -326,7 +332,7 @@ class HomeActivity : BaseAppCompatActivityViewBinding<ActivityMainBinding>(),
 
             viewBinding.btnSignIn.id -> {
                 authActivityResultLauncher.launch(
-                    Intent(this, id.xxx.module.auth.MainActivity::class.java)
+                    Intent(this, id.xxx.module.auth.AuthActivity::class.java)
                 )
             }
 

@@ -28,10 +28,10 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
-    kotlinOptions { jvmTarget = "1.8" }
+    kotlinOptions { jvmTarget = JavaVersion.VERSION_21.toString() }
 }
 
 dependencies {
@@ -43,7 +43,8 @@ dependencies {
     api "androidx.room:room-ktx:$vAndroidxRoom"
     androidTestImplementation "androidx.room:room-testing:$vAndroidxRoom"
 
-    api "com.google.firebase:firebase-firestore:24.7.0"
+    implementation platform("com.google.firebase:firebase-bom:$vFirebaseBom")
+    implementation "com.google.firebase:firebase-firestore-ktx"
 
     api "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$vKotlinCoroutines"
 
@@ -54,6 +55,6 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:$vMockitoInline"
 
     androidTestImplementation "androidx.test.ext:junit-ktx:$vAndroidxTestExtJunit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$vAndroidxEspresso"
-    implementation "androidx.test.espresso:espresso-idling-resource:$vAndroidxEspresso"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$vAndroidxTestEspresso"
+    implementation "androidx.test.espresso:espresso-idling-resource:$vAndroidxTestEspresso"
 }

@@ -2,9 +2,7 @@ name: build
 
 on:
   push:
-    branches: [ no-run ]
-#  pull_request:
-#    branches: [ master ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -12,62 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: set up JDK 17
-        uses: actions/setup-java@v3
+      - uses: actions/checkout@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v4
         with:
-          java-version: "17"
-          distribution: "adopt"
-          # cache: gradle
-
-      - name: set local.properties
-        run: |
-          echo debug_store_password="${{ secrets.RELEASE_STORE_PASSWORD }}" >> local.properties
-          echo debug_key_alias="${{ secrets.RELEASE_KEY_ALIAS }}" >> local.properties
-          echo debug_key_password="${{ secrets.RELEASE_KEY_PASSWORD }}" >> local.properties
-          echo debug_store_file=~/release.jks >> local.properties
-
-          echo release_store_password="${{ secrets.RELEASE_STORE_PASSWORD }}" >> local.properties
-          echo release_key_alias="${{ secrets.RELEASE_KEY_ALIAS }}" >> local.properties
-          echo release_key_password="${{ secrets.RELEASE_KEY_PASSWORD }}" >> local.properties
-          echo release_store_file=~/debug.jks >> local.properties
-
-      - name: generate key store
-        run: |
-          echo "${{ secrets.RELEASE_JKS_ASC_BASE64 }}" | base64 --decode > ~/release.jks.asc
-          gpg -d --passphrase "${{ secrets.RELEASE_JKS_ASC_PASSPHRASE }}" --batch ~/release.jks.asc > ~/release.jks
-
-          echo "${{ secrets.RELEASE_JKS_ASC_BASE64 }}" | base64 --decode > ~/debug.jks.asc
-          gpg -d --passphrase "${{ secrets.RELEASE_JKS_ASC_PASSPHRASE }}" --batch ~/debug.jks.asc > ~/debug.jks
-
-      - name: Gradle cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
+          java-version: "21"
+          distribution: "oracle"
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build
-        run: ./gradlew clean build
+      - name: Assemble release
+        run: ./gradlew clean assembleRelease
 
-      - name: upload outputs
-        uses: actions/upload-artifact@v3
-        with:
-          name: outputs
-          path: app/build/outputs
-
-      - name: upload apk debug
-        uses: actions/upload-artifact@v3
-        with:
-          name: apk-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
-
-      - name: upload apk release
-        uses: actions/upload-artifact@v3
+      - name: Upload apk release
+        uses: actions/upload-artifact@v4
         with:
           name: apk-release
           path: app/build/outputs/apk/release/app-release.apk
